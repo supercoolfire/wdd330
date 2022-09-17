@@ -1,0 +1,9 @@
+body {
+    max-width: 800px;
+    margin: 0 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1:hover {
+    cursor: pointer;
+}
