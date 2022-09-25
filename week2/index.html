@@ -2,23 +2,491 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/small.css">
-    <title>Portfolio</title>
+  <link rel="stylesheet" href="../css/small.css">
+  <title>Portfolio</title>
 </head>
 
 <body>
-    <header>
-        <h1 id="rickRoll">Week3</h1>
-    </header>
-    <main>
-        <a href="../index.html">
-            < Back</a> </main> <footer>
-                </footer>
-                <script src="../js/main.js"></script>
+  <header>
+    <h1 id="rickRoll">Week2</h1>
+    <a href="../index.html"> 🡠 Back</a>
+  </header>
+  <ol>
+    <li><input checked="checked" type="checkbox" /> Read <a
+        href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read">Ch2: Programming
+        basics</a>. Much of this should be review, but pay special attention to the sections on
+      <ol>
+        <li><input checked="checked" type="checkbox" /> variables,
+          <ol>
+            <li>Declaring and Assigning
+              <ol>
+                <li>
+                  <pre>                      <code>
+          const name = 'Alexa'; // This won't be assigned to another string 
+          let score = 0; // This value may change during the program 
+          let x = 3, y = 4, z = 5; // declare and assign multiple variables at the same time 
+                                </code>
+                              </pre>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><input checked="checked" type="checkbox" /> scope,
+          <ol>
+            <li>Using const and let to declare variables means they are block scoped, so their value only exists inside
+              the block they are declared in.&nbsp;</li>
+            <li>Scope is an important concept in programming. It refers to where a constant or variable is accessible by
+              the program. There are two common scopes that are often referred to in programs: global scope and local
+              scope.</li>
+            <li>Global Scope
+              <ol>
+                <li>accessible everywhere</li>
+              </ol>
+            </li>
+            <li>Local Scope
+              <ol>
+                <li>variables defined inside a block</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><input checked="checked" type="checkbox" /> Converting
+          <ol>
+            <li>Converting Strings to Numbers &lt;&lt; 5
+              <ol>
+                <li>
+                  <pre><code>
+          Number('23');
+          const answer = '5' * 1;
+          &lt;&lt; 5
+          typeof answer;</code></pre>
+                </li>
+              </ol>
+            </li>
+            <li>Converting Numbers to Strings
+              <ol>
+                <li>
+                  <pre><code>
+          String(3);
+          </code></pre>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><input checked="checked" type="checkbox" /> parsing, and
+          <ol>
+            <li>There is also a useful function called parseInt() that can be used to convert a string representation of
+              a numerical value back into a number
+              <div>
+                <ol>
+                  <li>
+                    <pre><code>
+          &lt;&lt; 10 
+           parseInt('omg',36); 
+          &lt;&lt; 31912 
+           parseInt('23',10); 
+          &lt;&lt; 23 
+          </code></pre>
+                  </li>
+                </ol>
+              </div>
+            </li>
+            <li>If a string starts with a number, the parseInt function will use this number and ignore any letters that
+              come afterwards:
+              <ol>
+                <li>
+                  <pre><code>
+          const address = '221B Baker Street'; 
+          parseInt(address, 10) 
+          &lt;&lt; 221 
+          </code></pre>
+                </li>
+              </ol>
+            </li>
+            <li>parseInt with a decimal, it will remove anything after the decimal point
+              <ol>
+                <li>
+                  <pre><code>
+          parseInt(address, 10) 
+          &lt;&lt; 221 
+          </code></pre>
+                </li>
+              </ol>
+            </li>
+            <li>parseFloat() that converts strings into floating point decimal numbers
+              <ol>
+                <li>
+                  <pre><code>
+          parseFloat('2.9',10); 
+          &lt;&lt; 2.9 
+          </code></pre>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><input checked="checked" type="checkbox" />template literals.
+          <ol>
+            <li>
+              <pre><code>
+          const name = `Siri`; 
+          `Hello ${ name }!`; 
+          &lt;&lt; 'Hello Siri!' 
+          const age = 39; 
+          `I will be ${ age + 1 } next year`; 
+          &lt;&lt; 'I will be 40 next year' 
+          </code></pre>
+            </li>
+            <li>
+              <pre><code>
+          `This is the start ... 
+          .... and this is the end` 
+          &lt;&lt; 'This is the start ...\n\n\n.... and this is the end' 
+          </code></pre>
+            </li>
+            <li>
+              <pre><code>
+          `This character, \`, is a backtick` 
+          &lt;&lt; 'This character, `, is a backtick' 
+          </code></pre>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><input checked="checked" type="checkbox" />&nbsp;Read all of <a
+        href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read">Ch3: Arrays, Logic,
+        and Loops</a>. Again much of this should feel like review. Pay special attention to the section on
+      <ol>
+        <li>array methods.
+          <ol>
+            <li>pop()
+              <ol>
+                <li>remove the last item from an array</li>
+              </ol>
+            </li>
+            <li>shift()
+              <ol>
+                <li>removes the first item in the array</li>
+              </ol>
+            </li>
+            <li>push()
+              <ol>
+                <li>appends a new value to the end of the array</li>
+              </ol>
+            </li>
+            <li>unshift()
+              <ol>
+                <li>appends a new item to the beginning of the array</li>
+              </ol>
+            </li>
+            <li>concat()
+              <ol>
+                <li>merge an array with one or more arrays</li>
+              </ol>
+            </li>
+            <li>join()
+              <ol>
+                <li>turn the array into a string that comprises all the items in the array, separated by commas</li>
+              </ol>
+            </li>
+            <li>slice()
+              <ol>
+                <li>creates a subarray; effectively chopping out a slice of an original array, starting at one position
+                  and finishing at another. For example, if we wanted to find the 3rd and 4th item in our array we would
+                  use the following code:
+                  <ol>
+                    <li>
+                      <pre><code>
+          avengers.slice(2,4) // starts at the third item (index of 2) and finishes at the fourth (the item with index 4 is not included) 
+          &lt;&lt; ['Thor', 'Hulk'] 
+          </code></pre>
+                    </li>
+                  </ol>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><input checked="checked" type="checkbox" />&nbsp;Read all of <a
+            href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read">Ch4:
+            Functions</a>. Note that there are multiple ways to declare a function in Javascript. Pay close attention to
+          the concept of</li>
+        <ol>
+          <li>splice()
+            <ol>
+              <li>removes items from an array then inserts new items in their place. For example, the following code
+                removes the string 'Hulk' and replaces it with 'Scarlett Witch'::
+                <ol>
+                  <li>
+                    <pre><code>
+          avengers.slice(2,4) // starts at the third item (index of 2) and finishes at the fourth (the item with index 4 is not included) 
+          &lt;&lt; ['Thor', 'Hulk'] 
+          </code></pre>
+                  </li>
+                </ol>
+              </li>
+              <li>reverse()
+                <ol>
+                  <li>reverse the order of an array</li>
+                </ol>
+              </li>
+              <li>sort()
+                <ol>
+                  <li>sort the order of an array</li>
+                </ol>
+              </li>
+              <li>indexOf()
+                <ol>
+                  <li>find out if an array contains a particular value
+                    <ol>
+                      <li>avengers.indexOf('Iron Man');</li>
+                    </ol>
+                    &lt;&lt; 3</li>
+                </ol>
+              </li>
+              <li>includes()
+                <ol>
+                  <li>returns a boolean value depending on whether the array contains a particular element or not
+                    <ol>
+                      <li>avengers.includes('Iron Man');</li>
+                    </ol>
+                    &lt;&lt; true</li>
+                </ol>
+              </li>
+              <li>Set()
+                <ol>
+                  <li>Create empty set
+                    <ol>
+                      <li>const list = new Set();</li>
+                    </ol>
+                  </li>
+                </ol>
+              </li>
+              <li>Add()
+                <ol>
+                  <li>placed Values into a set
+                    <ol>
+                      <li>list.add(1);</li>
+                    </ol>
+                    &lt;&lt; Set { 1 }
+                    <ol>
+                      <li>list.add(2).add(3).add(4);</li>
+                    </ol>
+                    &lt;&lt; Set { 1, 2, 3, 4 }
+                    <ol>
+                      <li>const numbers = new Set([1,2,3]);</li>
+                    </ol>
+                  </li>
+                </ol>
+              </li>
+              <li>size()
+                <ol>
+                  <li>The number of values in a set can be found
+                    <ol>
+                      <li>const jla = new Set().add('Superman').add('Batman').add('Wonder Woman');</li>
+                    </ol>
+                    jla &lt;&lt; 3</li>
+                  <li>jla.size();</li>
+                  <li>&lt;&lt; Set { 'Superman', 'Batman', 'Wonder Woman' }</li>
+                </ol>
+              </li>
+              <li>has()
+                <ol>
+                  <li>used to check if a value is in a set. This returns a boolean value of true or false
+                    <ol>
+                      <li>jla.has('Superman');</li>
+                    </ol>
+                    &lt;&lt; true</li>
+                </ol>
+              </li>
+              <li>delete()
+                <ol>
+                  <li>remove a value from a set</li>
+                  <li>This returns a boolean value of true if the value was removed from the set, or false if the value
+                    wasn't in the set and couldn't be removed
+                    <ol>
+                      <li>jla.delete('Superman');</li>
+                    </ol>
+                    &lt;&lt; true</li>
+                </ol>
+              </li>
+              <li>clear()
+                <ol>
+                  <li>remove all values from a set
+                    <ol>
+                      <li>jla.clear();</li>
+                    </ol>
+                  </li>
+                </ol>
+              </li>
+              <li>Array.from()
+                <ol>
+                  <li>convert a set into an array
+                    <ol>
+                      <li>const shoppingSet = new Set().add('Apples').add('Bananas').add('Beans');</li>
+                      <li>const shoppingArray = Array.from(shoppingSet);</li>
+                      <li>Array.from(romanNumerals)</li>
+                    </ol>
+                    &lt;&lt; [ [ 1, 'I' ], [ 2, 'II' ], [ 3, 'III' ], [ 4, 'IV' ], [ 5, 'V' ] ]</li>
+                </ol>
+              </li>
+              <li>get()
+                <ol>
+                  <li>The value of an object's properties can be accessed directly, whereas maps restrict
+                    <ol>
+                      <li>romanNumerals.get(4);</li>
+                    </ol>
+                    &lt;&lt; 'IV'</li>
+                </ol>
+              </li>
+              <li>Map()
+                <ol>
+                  <li>empty map object can be created using the new operator
+                    <ol>
+                      <li>const romanNumerals = new Map();</li>
+                    </ol>
+                  </li>
+                </ol>
+              </li>
+              <li>keys()
+                <ol>
+                  <li>iterate over each key with the following for-of loop
+                    <ol>
+                      <li>for(const key of romanNumerals.keys()) {</li>
+                    </ol>
+                    console.log(key); 2 5</li>
+                  <li>4</li>
+                  <li>3</li>
+                  <li>&lt;&lt; 1</li>
+                  <li>}</li>
+                </ol>
+              </li>
+              <li>values()
+                <ol>
+                  <li>iterate over the values in a similar way
+                    <ol>
+                      <li>for(const value of RomanNumerals.values()) {</li>
+                    </ol>
+                    console.log(value); II V</li>
+                  <li>IV</li>
+                  <li>III</li>
+                  <li>&lt;&lt; I</li>
+                  <li>}</li>
+                </ol>
+              </li>
+              <li>entries()
+                <ol>
+                  <li>access both the key and the value
+                    <ol>
+                      <li>for(const [key,value] of RomanNumerals.entries()) {</li>
+                    </ol>
+                    console.log(`${key} in Roman numerals is ${value}`); 2 in Roman numerals is II 5 in Roman numerals
+                    is V</li>
+                  <li>4 in Roman numerals is IV</li>
+                  <li>3 in Roman numerals is III</li>
+                  <li>&lt;&lt; 1 in Roman numerals is I</li>
+                  <li>}</li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+          <li><input checked="checked" type="checkbox" />&nbsp;callbacks
+            <ol>
+              <li>function that is provided as an argument to another function
+                <ol>
+                  <li>function sing(song) {</li>
+                </ol>
+                console.log(`I'm singing along to ${song}`); &lt;&lt; 'I'm singing along to Let It Go'
+                <ol>
+                  <li>if(typeof(callback) === 'function'){</li>
+                </ol>
+                callback();
+                <ol>
+                  <li>function dance() {</li>
+                </ol>
+                console.log("I'm moving my body to the groove."); ( We&rsquo;re just logging a simple message to the
+                console in these examples, but these functions could be used to do anything in a practical sense.)
+                &lt;&lt; 'I'm singing along to Let It Go.'</li>
+              <li>'I'm moving my body to the groove.'</li>
+              <li>sing('Let It Go',dance);</li>
+              <li>}</li>
+              <li>}</li>
+              <li>sing('Let It Go')</li>
+              <li>}</li>
+              <li>Sorting Arrays With A Callback
+                <ol>
+                  <li>&gt; [1,3,12,5,23,18,7].sort();</li>
+                </ol>
+                &lt;&lt; [1, 12, 18, 23, 3, 5, 7]</li>
+            </ol>
+          </li>
+          <li><input checked="checked" type="checkbox" />&nbsp;If you are looking for more code exercises to practice
+            with check out <a href="http://eloquentjavascript.net/code">this code sandbox</a>. You should look at the
+            exercises from Ch2-4</li>
+          <li><input checked="checked" type="checkbox" />&nbsp;Alternatively (or additionally) you could looks at
+            chapters 2-4 of <a href="http://eloquentjavascript.net/index.html">Eloquent JavaScript (EJS)</a> if you feel
+            like you need a different approach or more depth on these topics.</li>
+          <li><input checked="checked" type="checkbox" />&nbsp;There are lots of great resources for finding Javascript
+            exercises out there. A simple search would show resources such as:
+            <ul>
+              <li><a href="https://www.w3resource.com/javascript-exercises/"><input checked="checked"
+                    type="checkbox" />&nbsp;W3Resource</a></li>
+              <li><a href="https://github.com/workshopper/javascripting/tree/master/problems"><input
+                    type="checkbox" />&nbsp;NodeSchool-Github</a></li>
+              <li><a href="https://www.jshero.net/en/success.html"><input type="checkbox" />&nbsp;JS
+                  Hero</a></li>
+              <li><a href="https://javascript30.com/"><input type="checkbox" />&nbsp;Javascript30</a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </ol>
+    </li>
+  </ol>
+  <h2>Team Activity</h2>
+  <p><textarea cols="100" rows="20">    &lt;input type="number" name="" id="number" required&gt;
+      &lt;input type="button" value="Calculate total" id="button_here"&gt;
+      &lt;br&gt;
+      &lt;input type="number" name="" id="number2" required&gt;
+      &lt;input type="button" value="+" id="plus"&gt;
+      &lt;div id="numbers"&gt;&lt;/div&gt;
+    
+    &lt;script&gt;
+      document.getElementById("button_here").addEventListener('click', () =&gt; {
+        let number = document.getElementById("number").value;
+        if (number) {
+          let numbers = number.split('');
+          let total = 0;
+          numbers.forEach(e =&gt; {
+            total += parseInt(e); // convert string to integer
+          });
+          document.getElementById('numbers').innerHTML = total;
+        }
+      });
+      document.getElementById("plus").addEventListener('click', () =&gt; {
+        let number = document.getElementById("number").value + document.getElementById("number2").value;
+        if (number) {
+          let numbers = number.split('');
+          let total = 0;
+          numbers.forEach(e =&gt; {
+            total += parseInt(e); // convert string to integer
+          });
+          document.getElementById('numbers').innerHTML = total;
+        }
+      });
+    &lt;/script&gt;</textarea></p>
+  <footer>
+
+  </footer>
+
+  <!-- <script src="../js/week2.js"></script> -->
 </body>
 
 </html>
