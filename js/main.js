@@ -1,6 +1,7 @@
 const main = {
   init: () => {
     main.fourthPolio();
+    // main.anotherFunction();
   },
   fourthPolio: () => {
     const links = [{
@@ -12,7 +13,7 @@ const main = {
         url: "week2/index.html",
       },
       {
-        label: "Week2",
+        label: "Week3",
         url: "week3/index.html",
       }
     ];
@@ -36,6 +37,9 @@ const main = {
     
       });
     }
+  },
+  anotherFunction: () => {
+ 
   }
 
 }
