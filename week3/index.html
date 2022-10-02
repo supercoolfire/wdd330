@@ -919,18 +919,316 @@ pattern.test('jokingly');
 << false
           </code></pre>
           <pre><code class="language-javascript line-numbers">
-            pattern.exec('joke'); 
-            << null
+/* urns an array containing the first match found, 
+or null if there aren’t any matches*/
+pattern.exec('joke'); 
+<< null
+
+pattern.exec('joking');
+<< [ 'joking', index: 0, input: 'joking' ]
+          </code></pre>
+          <h3>Basic Regular Expressions</h3>
+          <pre><code class="language-javascript line-numbers">
+// At the most basic level, a regular expression will just be a string of characters
+const pattern = /JavaScript/;
+<< /JavaScript/
+          </code></pre>
+          <h3>Character Groups</h3>
+          <pre><code class="language-javascript line-numbers">
+const vowels = /[aeiou]/ // placed together inside square brackets
+<< /[aeiou]/
+
+/[A-Z]/ // sequence of characters can also be represented by placing a dash [ - ] between the first and last characters
+
+/[0-9]/ 
+
+/[^A-Z]/ //  \^ negates the sequence. expression represents any character that is not a capital letter
+          
+pattern = /[Jj][aeiou]v[aeiou]/; // represents the letter J (lowercase or capital) followed by a vowel, followed by a lowercase v, followed by a vowel
+<< /[Jj][aeiou]v[aeiou]/
+
+pattern.test('JavaScript');
+<< true
+
+pattern.test('jive');
+<< true
+
+pattern.test('hello');
+<< false
+
+</code></pre>
+          <h3>Regular Expression Properties</h3>
+          <ul>
+            <li class="">
+              <p class="">The&nbsp;<code
+                  class="prism-code language-none rounded-md p-1 break-words">global</code>&nbsp;property makes the
+                pattern return all matches. By default, the pattern only looks for the first occurrence of a match.</p>
+            </li>
+            <li class="">
+              <p class="">The&nbsp;<code
+                  class="prism-code language-none rounded-md p-1 break-words">ignoreCase</code>&nbsp;property makes the
+                pattern case-insensitive. By default, they are case sensitive.</p>
+            </li>
+            <li class="">
+              <p class="">The&nbsp;<code
+                  class="prism-code language-none rounded-md p-1 break-words">multiline</code>&nbsp;property makes the
+                pattern multiline. By default, a pattern will stop at the end of a line.</p>
+            </li>
+          </ul>
+          </div>
+          <div class="relative" data-interactive="true">
+            <div class="flex flex-col items-center absolute top-1 -ml-5 !my-0">&nbsp;</div>
+            <p class="px-1 -mx-1" data-block="k01nwu1k">The following flags can be placed after a regular expression
+              literal to change the default properties:</p>
+          </div>
+          <div class="relative" data-interactive="true">
+            <div class="flex flex-col items-center absolute top-1 -ml-5 !my-0">&nbsp;</div>
+            <ul class="px-1 -mx-1" data-block="k01nwu1l">
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">g</code>&nbsp;sets
+                  the&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">global</code>&nbsp;property
+                  to true</p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">i</code>&nbsp;sets
+                  the&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">ignoreCase</code>&nbsp;property to true
+                </p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">m</code>&nbsp;sets
+                  the&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">multiline</code>&nbsp;property to true
+                </p>
+              </li>
+            </ul>
+            <pre><code class="language-javascript line-numbers">
+pattern = /java/i
+<< /java/i
+
+pattern.test('JavaScript'); 
+<< true // the ignoreCase property is set to true
+          </code></pre>
+            <pre><code class="language-javascript line-numbers">
+// properties can be checked using the dot notation, but cannot be updated once the regular expression has been created
+pattern = /java/i
+<< /java/i
+
+pattern.ignoreCase // checking it is true
+<< true
+
+pattern.ignoreCase = false // this won't work
+<< false
+
+pattern.ignoreCase // has it changed? Nope!
+<< true
+          </code></pre>
+            <pre><code class="language-javascript line-numbers">
+// The only way to change the ignoreCase property to false is to redefine the regular expression
+pattern = /java/
+<< /java/
+          </code></pre>
+            <h3>Special Characters</h3>
+            <ul class="px-1 -mx-1" data-block="k01nwu1u">
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">.</code>&nbsp;matches any
+                  character, except line breaks</p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">\w</code>&nbsp;matches any
+                  word character, and is equivalent to&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">[A-Za-z0-9_]</code></p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">\W</code>&nbsp;matches any
+                  non-word character, and is equivalent to&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">[\^A-Za-z0-9_]</code></p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">\d</code>&nbsp;matches any
+                  digit character, and is equivalent to&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">[0-9]</code></p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">\D</code>&nbsp;matches any
+                  non-digit character, and is equivalent to&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">[^0-9]</code></p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">\s</code>&nbsp;matches any
+                  whitespace character, and is equivalent to&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">[ \t\r\n\f]</code></p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">\S</code>&nbsp;matches any
+                  non-whitespace character, and is equivalent to&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">[^ \t\r\n\f]</code></p>
+              </li>
+            </ul>
+            <h3>Modifiers</h3>
+            <ul class="px-1 -mx-1" data-block="k01nwu1x">
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">?</code>&nbsp;makes the
+                  preceding token in the regular expression optional</p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">*</code>&nbsp;matches one
+                  or more occurrences of the preceding token</p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">+</code>&nbsp;matches one
+                  or more occurrences of the preceding token</p>
+              </li>
+              <li class="">
+                <p class=""><code
+                    class="prism-code language-none rounded-md p-1 break-words">{n}</code>&nbsp;matches&nbsp;<em
+                    class="">n</em>&nbsp;occurrences of the preceding token</p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">{n,}</code>&nbsp;matches
+                  at least&nbsp;<em class="">n</em>&nbsp;occurrences of the pattern</p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">{,m}</code>&nbsp;matches
+                  at most&nbsp;<em class="">m</em>&nbsp;occurrences of the preceding token</p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">{n,m}</code>&nbsp;matches
+                  at least&nbsp;<em class="">n</em>&nbsp;and at most&nbsp;<em class="">m</em>&nbsp;occurrences of the
+                  preceding token</p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">^</code>&nbsp;marks the
+                  position immediately before the first character in the string</p>
+              </li>
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">$</code>&nbsp;marks the
+                  position immediately after the last character in the string</p>
+              </li>
+            </ul>
+            <pre><code class="language-javascript line-numbers">
+// match anything that starts with J followed by one or more vowels, then any letters or numbers ending in ing
+pattern = /^J[aeiou]+\w+ing$/
+<< /J[aeiou]+\w+ing/
+
+pattern.test('Joking');
+<< true
+
+pattern.test('Jeering');
+<< true
+            </code></pre>
+            <h3>Greedy and Lazy Modifiers</h3>
+            <pre><code class="language-javascript line-numbers">
+const word = 'abracadabra';
+
+/* greedy pattern /a.+a/ will return the whole string because it 
+is the longest string that matches the pattern of 'a' */
+const greedyPattern = /a.+a/;
+greedyPattern.exec(word);
+<< [ 'abracadabra', index: 0, input: 'abracadabra' ]
+            </code></pre>
+            <pre><code class="language-javascript line-numbers">
+/* lazy pattern /a.+?a/ changes the + modifier to +?. This will only return the 
+string 'abra' as this is the shortest string that matches the pattern 'a' 
+followed by some characters and ending in an 'a' */
+const lazyPattern = /a.+?a/;
+lazyPattern.exec(word);
+<< [ 'abra', index: 0, input: 'abracadabra' ]
+            </code></pre>
+            <h3>A Practical Example</h3>
+            <pre><code class="language-javascript line-numbers">
+const pdf = /.*\.pdf$/;  // looking for PDF files and had a list of filenames
+
+pdf.test('chapter5.pdf');
+<< true
+
+pdf.test('report.doc');
+<< false
+            </code></pre>
+            <h3>String Methods</h3>
+            <pre><code class="language-javascript line-numbers">
+// split a string every time there are one or more occurrences of a whitespace character
+'Hello World!'.split(/\s+/) //
+<< ['Hello', 'World!']
+            </code></pre>
+            <pre><code class="language-javascript line-numbers">
+//only the first is returned
+'JavaScript'.match(/[aeiou]/); // return the first vowel
+<< ['a']
+
+'JavaScript'.match(/[aeiou]/g); // return an array of all the vowels
+<< ['a', 'a', 'i']
+            </code></pre>
+            <pre><code class="language-javascript line-numbers">
+// returns the position of the first match
+"I'm learning JavaScript".search(/java/i);
+<< 13
+
+//returns -1 if there is no match
+"I'm learning JavaScript".search(/ruby/i);
+<< -1
+            </code></pre>
+            <pre><code class="language-javascript line-numbers">
+'JavaScript'.replace(/[aeiou]/ig,'*');
+<< 'J*v*Scr*pt'
+            </code></pre>
+            <h3>Matched Groups</h3>
+            <pre><code class="language-javascript line-numbers">
+/* capturing group will be numbered 1, and the second 2, etc. The matches 
+will also be stored in special predefined variables $1, $2 etc */
+const link = "<a href='https://www.sitepoint.com' title='Oh Yeah!'>Awesome Web Resources</a>"
+
+const mdLink = link.replace(/<a href='(.*?)'.*?>(.*?)<\/a>/g, "[$2]($1)");
+
+
+mdLink
+<< [Awesome Web Resources](https://www.sitepoint.com)
+            </code></pre>
+            <h3>Quiz Ninja Project</h3>
+            <pre><code class="language-javascript line-numbers">
+const quiz = [
+  { name: "Superman",realName: "Clark Kent" },
+  { name: "Wonder Woman",realName: "Diana Prince" },
+  { name: "Batman",realName: "Bruce Wayne" },
+  { name: "Defeated Bruce Lee",realName: "Bruise Lee" },
+];
+
+const game = {
+  start(quiz){
+      this.questions = [...quiz];
+      this.score = 0;
+      // main game loop
+      for(const question of this.questions){
+        this.question = question;
+        this.ask();
+      }
+      // end of main game loop
+      this.gameOver();
+  },
+  ask(){
+      const question = `What is ${this.question.name}'s real name?`;
+      const response =  prompt(question);
+      this.check(response);
+  },
+  check(response){
+      const answer = this.question.realName;
+      if(response === answer){
+      alert('Correct!');
+      this.score++;
+      } else {
+      alert(`Wrong! The correct answer was ${answer}`);
+      }
+  },
+  gameOver(){
+      alert(`Game Over, you scored ${this.score} point${this.score !== 1 ? 's' : ''}`);
+  }
+}
+
+game.start(quiz);
+            </code></pre>
+            <pre><code class="language-javascript line-numbers">
             
-            pattern.exec('joking');
-            << [ 'joking', index: 0, input: 'joking' ]
-          </code></pre>
-          <pre><code class="language-javascript line-numbers">
-          
-          </code></pre>
-          <pre><code class="language-javascript line-numbers">
-          
-          </code></pre>
+            </code></pre>
 
 
         </li>
@@ -940,6 +1238,199 @@ pattern.test('jokingly');
 
         <a href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/6">Ch6:
           Document Object Model (Links to an external site.)</a>
+        <ul class="px-1 -mx-1" data-block="k01nwu3h">
+          <li class="">
+            <p class="">Introduction to the DOM</p>
+            <h3>What is the DOM?</h3>
+            <p>represents an HTML document as a network of connected nodes that form a tree-like structure</p>
+            <p><textarea cols="100"
+                rows="1">&lt;p class=&#39;warning&#39;&gt;Something has gone &lt;em&gt;very&lt;/em&gt; wrong!&lt;/p&gt;</textarea>
+            </p>
+
+            <figure class="imagefig px-1 -mx-1" data-block="k01nwu3p">
+              <p class="image-wrapper flex"><img class=" inline justify-self-center"
+                  src="https://learnable-static.s3.amazonaws.com/premium/reeedr/books/javascript-novice-to-ninja-2nd-edition/images/ch6nodes.png"
+                  alt="" /></p>
+            </figure>
+            <h3>An Example Web Page</h3>
+            <p><textarea cols="100" rows="20">&lt;!doctype html&gt;
+              &lt;html lang=&quot;en&quot;&gt;
+              &lt;head&gt;
+              &lt;meta charset=&quot;utf-8&quot;&gt;
+              &lt;title&gt;Justice League&lt;/title&gt;
+              &lt;/head&gt;
+              &lt;body&gt;
+                  &lt;header&gt;
+                  &lt;h1 id=&#39;title&#39;&gt;Justice League&lt;/h1&gt;
+                  &lt;/header&gt;
+                  &lt;ul id=&#39;roster&#39;&gt;
+                  &lt;li class=&#39;hero&#39;&gt;Superman&lt;/li&gt;
+                  &lt;li class=&#39;vigilante hero&#39; id=&#39;bats&#39;&gt;Batman&lt;/li&gt;
+                  &lt;li class=&#39;hero&#39;&gt;Wonder Woman&lt;/li&gt;
+                  &lt;/ul&gt;
+              &lt;/body&gt;
+              &lt;/html&gt;</textarea></p>
+            <figure class="imagefig px-1 -mx-1" data-block="k01nwu40">
+              <p class="image-wrapper flex"><img class=" inline justify-self-center"
+                  src="https://learnable-static.s3.amazonaws.com/premium/reeedr/books/javascript-novice-to-ninja-2nd-edition/images/ch6htmlTree.png"
+                  alt="" /></p>
+              <figcaption class="text-sm leading-normal">The DOM tree</figcaption>
+            </figure>
+            <h3>Legacy DOM Shortcut Methods</h3>
+            <ul class="px-1 -mx-1" data-block="k01nwu4o">
+              <li class="">
+                <p class=""><code
+                    class="prism-code language-none rounded-md p-1 break-words">Document.body</code>&nbsp;returns the
+                  body element of a web page, as we saw in the previous example.</p>
+              </li>
+              <li class="">
+                <p class=""><code
+                    class="prism-code language-none rounded-md p-1 break-words">Document.images</code>&nbsp;returns a
+                  node list of all the images contained in the document.</p>
+              </li>
+              <li class="">
+                <p class=""><code
+                    class="prism-code language-none rounded-md p-1 break-words">Document.links</code>&nbsp;returns a
+                  node list of all the&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">&lt;a&gt;</code>&nbsp;elements
+                  and&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">&lt;area&gt;</code>&nbsp;elements that
+                  have an&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">href</code>&nbsp;attribute.</p>
+              </li>
+              <li class="">
+                <p class=""><code
+                    class="prism-code language-none rounded-md p-1 break-words">Document.anchors</code>&nbsp;returns a
+                  node list of all the&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">&lt;a&gt;</code>&nbsp;elements that have
+                  a&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">name</code>&nbsp;attribute.
+                </p>
+              </li>
+              <li class="">
+                <p class=""><code
+                    class="prism-code language-none rounded-md p-1 break-words">Document.forms</code>&nbsp;returns a
+                  node list of all the forms in the document. This will be used when we cover forms in Chapter 8</p>
+              </li>
+            </ul>
+            <h3>Not Actually Arrays</h3>
+            <pre><code class="language-javascript line-numbers">
+// document.images[0] will return the first image in the node list of all the images
+for (let i=0 ; i < document.images.length ; i++) { 
+
+  // do something with each image using document.images[i]
+  
+  }
+</code></pre>
+
+
+          </li>
+          <li class="">
+            <p class="">Getting elements ―&nbsp;<code
+                class="prism-code language-none rounded-md p-1 break-words">getElementById</code>,&nbsp;<code
+                class="prism-code language-none rounded-md p-1 break-words">getElementsByClassName</code>,&nbsp;<code
+                class="prism-code language-none rounded-md p-1 break-words">getElementsByTagName</code>,&nbsp;<code
+                class="prism-code language-none rounded-md p-1 break-words">querySelector</code>&nbsp;and&nbsp;<code
+                class="prism-code language-none rounded-md p-1 break-words">querySelectorAll</code></p>
+
+            <pre><code class="language-javascript line-numbers">
+const body = document.body; // access the body element of a web page and assign it to the variable body
+
+typeof body; // can check its type
+<< "object";
+
+body.nodeType; // we can use the nodeType property to find out what type of node it is
+<< 1
+                </code></pre>
+            <table data-block="k01nwu4f">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>element</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>attribute</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>text</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>comment</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>body</td>
+                </tr>
+              </tbody>
+            </table>
+            <pre><code class="language-javascript line-numbers">
+body.nodeName;  // find the name of the element
+<< "BODY"
+            </code></pre>
+            <h4>Get Elements By Their Tag Name</h4>
+            <pre><code class="language-javascript line-numbers">
+const listItems = document.getElementsByTagName('li'); // get all the list items
+
+//find each individual paragraph in the list
+listItems[0];
+<< <li class='hero'>Superman</li>
+
+listItems[1];
+<< <li class='vigilante hero' id='bats'>Batman</li>
+
+listItems[2];
+<< <li class='hero'>Wonder Woman</li>
+            </code></pre>
+
+            <h4>Get Elements By Their Class Name</h4>
+            <pre><code class="language-javascript line-numbers">
+const heroes = document.getElementsByClassName('hero'); // list of all elements that have the class name that is supplied
+
+heroes.length; // querying the length property
+<< 3
+
+document.getElementsByClassName('villain').length; // if there are no elements with the given class, an HTML collection is still returned
+<< 0
+            </code></pre>
+            <h4>Query Selectors</h4>
+            <pre><code class="language-javascript line-numbers">
+document.querySelector('#bats'); // instead of document.getElementById()
+<< <li class="vigilante hero" id="bats">Batman</li>
+</code></pre>
+            <pre><code class="language-javascript line-numbers keep-markup">
+document.querySelectorAll('.hero'); // instead of document.getElementsByClassName
+<< NodeList [<li class="hero">, <li id="bats">, <li class="hero">]
+            </code></pre>
+            <pre><code class="language-javascript line-numbers">
+const wonderWoman = document.querySelector('li:last-child');
+</code></pre>
+
+
+          </li>
+          <li class="">
+            <p class="">Navigating the DOM</p>
+          </li>
+          <li class="">
+            <p class="">Getting and setting an element&rsquo;s attributes</p>
+          </li>
+          <li class="">
+            <p class="">Updating the DOM by creating dynamic markup</p>
+          </li>
+          <li class="">
+            <p class="">Changing the CSS of an element</p>
+          </li>
+          <li class="">
+            <p class="">Our project ― we'll dynamically insert each question into the HTML</p>
+          </li>
+        </ul>
       </li>
       <li>
         <input checked="checked" type="checkbox"> Read all of 
@@ -991,7 +1482,14 @@ pattern.test('jokingly');
     <p>
       <a href="./index-START.html">starter code</a>
     </p>
-    <p></p>
+    <h2>Samples</h2>
+    <ul>
+      <li>
+        <a href="./index-FINISHED-events.html">Events</a>
+      </li>
+      <li><a href="./click-n-drag/index-FINISHED.html">Click and Drag</a></li>
+      <li><a href="./local-storage/index-START.html">Local Storage</a></li>
+    </ul>
   </main>
   <footer></footer>
   <script src="../js/prism.js"></script>
