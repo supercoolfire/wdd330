@@ -7,6 +7,6 @@ body {
 h1:hover {
     cursor: pointer;
 }
-ol {
-    
+.li-code {
+    list-style-type: none;
 }

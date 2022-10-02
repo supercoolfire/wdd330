@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="../css/small.css">
+  <link rel="stylesheet" href="../css/prism.css">
   <title>Portfolio</title>
 </head>
 
@@ -25,12 +26,12 @@
             <li>Declaring and Assigning
               <ol>
                 <li>
-                  <pre>                      <code>
-          const name = 'Alexa'; // This won't be assigned to another string 
-          let score = 0; // This value may change during the program 
-          let x = 3, y = 4, z = 5; // declare and assign multiple variables at the same time 
-                                </code>
-                              </pre>
+                  <pre><code class="language-javascript line-numbers">
+     const name = 'Alexa'; // This won't be assigned to another string 
+     let score = 0; // This value may change during the program 
+     let x = 3, y = 4, z = 5; // declare and assign multiple variables at the same time 
+                </code>
+               </pre>
                 </li>
               </ol>
             </li>
@@ -60,20 +61,20 @@
             <li>Converting Strings to Numbers &lt;&lt; 5
               <ol>
                 <li>
-                  <pre><code>
-          Number('23');
-          const answer = '5' * 1;
-          &lt;&lt; 5
-          typeof answer;</code></pre>
+                  <pre><code class="language-javascript line-numbers">
+     Number('23');
+     const answer = '5' * 1;
+     &lt;&lt; 5
+     typeof answer;</code></pre>
                 </li>
               </ol>
             </li>
             <li>Converting Numbers to Strings
               <ol>
                 <li>
-                  <pre><code>
-          String(3);
-          </code></pre>
+                  <pre><code class="language-javascript line-numbers">
+     String(3);
+     </code></pre>
                 </li>
               </ol>
             </li>
@@ -86,13 +87,13 @@
               <div>
                 <ol>
                   <li>
-                    <pre><code>
-          &lt;&lt; 10 
-           parseInt('omg',36); 
-          &lt;&lt; 31912 
-           parseInt('23',10); 
-          &lt;&lt; 23 
-          </code></pre>
+                    <pre><code class="language-javascript line-numbers">
+     &lt;&lt; 10 
+      parseInt('omg',36); 
+     &lt;&lt; 31912 
+      parseInt('23',10); 
+     &lt;&lt; 23 
+     </code></pre>
                   </li>
                 </ol>
               </div>
@@ -101,31 +102,31 @@
               come afterwards:
               <ol>
                 <li>
-                  <pre><code>
-          const address = '221B Baker Street'; 
-          parseInt(address, 10) 
-          &lt;&lt; 221 
-          </code></pre>
+                  <pre><code class="language-javascript line-numbers">
+     const address = '221B Baker Street'; 
+     parseInt(address, 10) 
+     &lt;&lt; 221 
+     </code></pre>
                 </li>
               </ol>
             </li>
             <li>parseInt with a decimal, it will remove anything after the decimal point
               <ol>
                 <li>
-                  <pre><code>
-          parseInt(address, 10) 
-          &lt;&lt; 221 
-          </code></pre>
+                  <pre><code class="language-javascript line-numbers">
+     parseInt(address, 10) 
+     &lt;&lt; 221 
+     </code></pre>
                 </li>
               </ol>
             </li>
             <li>parseFloat() that converts strings into floating point decimal numbers
               <ol>
                 <li>
-                  <pre><code>
-          parseFloat('2.9',10); 
-          &lt;&lt; 2.9 
-          </code></pre>
+                  <pre><code class="language-javascript line-numbers">
+     parseFloat('2.9',10); 
+     &lt;&lt; 2.9 
+     </code></pre>
                 </li>
               </ol>
             </li>
@@ -134,27 +135,27 @@
         <li><input checked="checked" type="checkbox" />template literals.
           <ol>
             <li>
-              <pre><code>
-          const name = `Siri`; 
-          `Hello ${ name }!`; 
-          &lt;&lt; 'Hello Siri!' 
-          const age = 39; 
-          `I will be ${ age + 1 } next year`; 
-          &lt;&lt; 'I will be 40 next year' 
-          </code></pre>
+              <pre><code class="language-javascript line-numbers">
+     const name = `Siri`; 
+     `Hello ${ name }!`; 
+     &lt;&lt; 'Hello Siri!' 
+     const age = 39; 
+     `I will be ${ age + 1 } next year`; 
+     &lt;&lt; 'I will be 40 next year' 
+     </code></pre>
             </li>
             <li>
-              <pre><code>
-          `This is the start ... 
-          .... and this is the end` 
-          &lt;&lt; 'This is the start ...\n\n\n.... and this is the end' 
-          </code></pre>
+              <pre><code class="language-javascript line-numbers">
+     `This is the start ... 
+     .... and this is the end` 
+     &lt;&lt; 'This is the start ...\n\n\n.... and this is the end' 
+     </code></pre>
             </li>
             <li>
-              <pre><code>
-          `This character, \`, is a backtick` 
-          &lt;&lt; 'This character, `, is a backtick' 
-          </code></pre>
+              <pre><code class="language-javascript line-numbers">
+     `This character, \`, is a backtick` 
+     &lt;&lt; 'This character, `, is a backtick' 
+     </code></pre>
             </li>
           </ol>
         </li>
@@ -203,10 +204,10 @@
                   use the following code:
                   <ol>
                     <li>
-                      <pre><code>
-          avengers.slice(2,4) // starts at the third item (index of 2) and finishes at the fourth (the item with index 4 is not included) 
-          &lt;&lt; ['Thor', 'Hulk'] 
-          </code></pre>
+                      <pre><code class="language-javascript line-numbers">
+     avengers.slice(2,4) // starts at the third item (index of 2) and finishes at the fourth (the item with index 4 is not included) 
+     &lt;&lt; ['Thor', 'Hulk'] 
+     </code></pre>
                     </li>
                   </ol>
                 </li>
@@ -225,10 +226,10 @@
                 removes the string 'Hulk' and replaces it with 'Scarlett Witch'::
                 <ol>
                   <li>
-                    <pre><code>
-          avengers.slice(2,4) // starts at the third item (index of 2) and finishes at the fourth (the item with index 4 is not included) 
-          &lt;&lt; ['Thor', 'Hulk'] 
-          </code></pre>
+                    <pre><code class="language-javascript line-numbers">
+     avengers.slice(2,4) // starts at the third item (index of 2) and finishes at the fourth (the item with index 4 is not included) 
+     &lt;&lt; ['Thor', 'Hulk'] 
+     </code></pre>
                   </li>
                 </ol>
               </li>
@@ -246,25 +247,41 @@
                 <ol>
                   <li>find out if an array contains a particular value
                     <ol>
-                      <li>avengers.indexOf('Iron Man');</li>
+                      <li>
+                        <pre><code class="language-javascript line-numbers">
+                          avengers.indexOf('Iron Man');
+
+                          &lt;&lt; 3
+                        </code></pre>
+                        </li>
                     </ol>
-                    &lt;&lt; 3</li>
+                    </li>
                 </ol>
               </li>
               <li>includes()
                 <ol>
                   <li>returns a boolean value depending on whether the array contains a particular element or not
                     <ol>
-                      <li>avengers.includes('Iron Man');</li>
+                      <li>
+                        <h3></h3>
+                        <pre><code class="language-javascript line-numbers">
+  avengers.includes('Iron Man');
+  
+  &lt;&lt; true
+</code></pre>
+                      </li>
                     </ol>
-                    &lt;&lt; true</li>
+                  </li>
                 </ol>
               </li>
               <li>Set()
                 <ol>
                   <li>Create empty set
                     <ol>
-                      <li>const list = new Set();</li>
+                      <li><pre><code class="language-javascript line-numbers">
+                        const list = new Set();
+                      </code></pre>
+                      </li>
                     </ol>
                   </li>
                 </ol>
@@ -451,42 +468,43 @@
     </li>
   </ol>
   <h2>Team Activity</h2>
-  <p><textarea cols="100" rows="20">    &lt;input type="number" name="" id="number" required&gt;
-      &lt;input type="button" value="Calculate total" id="button_here"&gt;
-      &lt;br&gt;
-      &lt;input type="number" name="" id="number2" required&gt;
-      &lt;input type="button" value="+" id="plus"&gt;
-      &lt;div id="numbers"&gt;&lt;/div&gt;
-    
-    &lt;script&gt;
-      document.getElementById("button_here").addEventListener('click', () =&gt; {
-        let number = document.getElementById("number").value;
-        if (number) {
-          let numbers = number.split('');
-          let total = 0;
-          numbers.forEach(e =&gt; {
-            total += parseInt(e); // convert string to integer
-          });
-          document.getElementById('numbers').innerHTML = total;
-        }
-      });
-      document.getElementById("plus").addEventListener('click', () =&gt; {
-        let number = document.getElementById("number").value + document.getElementById("number2").value;
-        if (number) {
-          let numbers = number.split('');
-          let total = 0;
-          numbers.forEach(e =&gt; {
-            total += parseInt(e); // convert string to integer
-          });
-          document.getElementById('numbers').innerHTML = total;
-        }
-      });
-    &lt;/script&gt;</textarea></p>
+  <p><textarea cols="100" rows="20">  &lt;input type="number" name="" id="number" required&gt;
+   &lt;input type="button" value="Calculate total" id="button_here"&gt;
+   &lt;br&gt;
+   &lt;input type="number" name="" id="number2" required&gt;
+   &lt;input type="button" value="+" id="plus"&gt;
+   &lt;div id="numbers"&gt;&lt;/div&gt;
+  
+  &lt;script&gt;
+   document.getElementById("button_here").addEventListener('click', () =&gt; {
+    let number = document.getElementById("number").value;
+    if (number) {
+     let numbers = number.split('');
+     let total = 0;
+     numbers.forEach(e =&gt; {
+      total += parseInt(e); // convert string to integer
+     });
+     document.getElementById('numbers').innerHTML = total;
+    }
+   });
+   document.getElementById("plus").addEventListener('click', () =&gt; {
+    let number = document.getElementById("number").value + document.getElementById("number2").value;
+    if (number) {
+     let numbers = number.split('');
+     let total = 0;
+     numbers.forEach(e =&gt; {
+      total += parseInt(e); // convert string to integer
+     });
+     document.getElementById('numbers').innerHTML = total;
+    }
+   });
+  &lt;/script&gt;</textarea></p>
   <footer>
 
   </footer>
 
   <!-- <script src="../js/week2.js"></script> -->
+  <script src="../js/prism.js"></script>
 </body>
 
 </html>
