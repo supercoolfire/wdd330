@@ -1,26 +1,40 @@
 const main = {
   init: () => {
-    main.fourthPolio();
-    // main.anotherFunction();
+    let myDate = new Date();
+    let myYear = myDate.getFullYear();
+
+    if (document.getElementsByName("title").textContent == "Portfolio") {
+      main.fourthPolio();
+    }
+    
+    if (document.getElementsByName("footer")) {
+      main.footer(myYear);
+    }
+
+    document.getElementById("rickRoll").onclick = () => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank").focus();
+
   },
   fourthPolio: () => {
     const links = [{
-        label: "Week1 notes",
+        label: "Week 1 notes",
         url: "week1/index.html",
       },
       {
-        label: "Week2",
+        label: "Week 2 notes",
         url: "week2/index.html",
       },
       {
-        label: "Week3",
+        label: "Week 3 notes",
         url: "week3/index.html",
-      }
+      },
+      {
+        label: "Week 4 notes",
+        url: "week4/index.html",
+      },
     ];
     
     readLinks(links);
-    document.getElementById("rickRoll").onclick = () => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank").focus();
-    
+        
     function readLinks(links) {
       let ol = document.getElementById("oList");
       links.forEach(e => {
@@ -38,8 +52,10 @@ const main = {
       });
     }
   },
-  anotherFunction: () => {
- 
+  footer: (myYear) => {
+    if (document.getElementById("theYear")) {
+      document.getElementById("theYear").textContent = myYear;
+    }
   }
 
 }

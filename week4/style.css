@@ -1,0 +1,15 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+	margin: 0 2rem;
+	max-width: 900px;
+}
+
+h1:hover {
+    cursor: pointer;
+}
+pre * {
+    font-family: monospace;
+    font-size: 1rem;
+}
