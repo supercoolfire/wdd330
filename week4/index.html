@@ -13,7 +13,7 @@
 
 <body>
   <header>
-    <h1 id="rickRoll">Week4</h1>
+    <h1 id="rickRoll">Week 4 Notes</h1>
     <a href="../index.html"> 🡠 Back</a>
   </header>
   <main>
@@ -21,68 +21,755 @@
       <details>
         <summary>Reading</summary>
         <ol>
-          <li>Read all of Ch8: Forms
-            <ul data-block="k01nwugr">
-              <li>
-                <h3>Form controls</h3>
-                <pre class="line-numbers"><code class="language-html">&lt;!doctype html&gt;
-&lt;html lang='en'&gt;
-&lt;head&gt;
-  &lt;meta charset='utf-8'&gt;
-  &lt;title&gt;Search&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;form name='search' action='/search'&gt;
-    &lt;input name='searchInput'&gt;
-    &lt;button type='submit'&gt;Search&lt;/button&gt;
-  &lt;/form&gt;
-&lt;script src='main.js'&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+          <li>
+            <details>
+              <summary>Read all of Ch8: Forms</summary>
+              <ul data-block="k01nwugr">
+                <li>
+                  <details>
+                    <summary>Form controls</summary>
+
+                    <details>
+                      <summary>&lt;input&gt;</summary>
+                      <ul>
+                        <li>Attributes<ul>
+                            <li>autofocus
+                              <pre
+                                class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">document.forms.hero.heroName.focus();</code></pre>
+                            </li>
+                            <li>placeholder</li>
+                            <li>maxlength</li>
+                          </ul>
+                        <li>Input Fields
+                          <ul>
+                            <li>Input Fields</li>
+                            <li>Password Input Fields</li>
+                            <li>Checkbox Input Fields</li>
+                            <li>Radio Button Input Fields</li>
+                            <li>File Input Fields</li>
+                            <li>Other Input Types</li>
+                            <li>Select Drop-Down List</li>
+                            <li>Text Areas</li>
+                          </ul>
+                        </li>
+                </li>
+              </ul>
+            </details>
+            <details>
+              <summary>&lt;select&gt;</summary>
+            </details>
+            <details>
+              <summary>&lt;textarea&gt;</summary>
+            </details>
+            <details>
+              <summary>&lt;button&gt;</summary>
+            </details>
+      </details>
+      </li>
+      <li>
+        <details>
+          <summary>Accessing form elements</summary>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Form properties and methods</summary>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Form events</summary>
+          <ul>
+            <li>event.preventDefault()
+              <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function makeHero(event) {
+
+event.preventDefault(); // prevent the form from being submitted
+
+const hero = {}; // create an empty object
+
+hero.name = form.heroName.value; // create a name property based on the input field's value
+
+alert(JSON.stringify(hero)); // convert object to JSON string and display in alert dialog
+return hero;
+}</code></pre>
+            </li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Submitting a form</summary>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Retrieving and changing values from a form</summary>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Form validation</summary>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Our project ― add a form for answering the questions.</summary>
+        </details>
+      </li>
+      </ul>
+      </details>
+      </li>
+      <li>
+        <details>
+          <summary>Read all of Ch12: Object Oriented Programming</summary>
+
+          <details>
+            <summary>Object-Oriented Programming</summary>
+          </details>
+          <details>
+            <summary>Constructor Functions</summary>
+          </details>
+          <details>
+            <summary>Static Methods</summary>
+          </details>
+          <details>
+            <summary>Prototypal Inheritance</summary>
+          </details>
+          <details>
+            <summary>Public and Private Methods</summary>
+          </details>
+          <details>
+            <summary>Inheritance</summary>
+          </details>
+          <details>
+            <summary>The Object Constructor</summary>
+          </details>
+          <details>
+            <summary>Polymorphism</summary>
+          </details>
+          <details>
+            <summary>Adding Methods to Built-in Objects</summary>
+          </details>
+          <details>
+            <summary>Property Attributes and Descriptors</summary>
+          </details>
+          <details>
+            <summary>Creating Objects from Other Objects</summary>
+          </details>
+          <details>
+            <summary>Mixins</summary>
+          </details>
+          <details>
+            <summary>Chaining Functions</summary>
+          </details>
+          <details>
+            <summary>Binding this</summary>
+          </details>
+          <details>
+            <summary>Borrowing Methods from Prototypes</summary>
+          </details>
+          <details>
+            <summary>Composition Over Inheritance</summary>
+          </details>
+
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Read the just the section on Modular JavaScript from Ch15: Modern JavaScript</summary>
+
+          <details>
+            <summary>Libraries</summary>
+            <ul>
+              <li>DOM Manipulation Example
+                <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">para.classList.add('important');
+const newPara = document.createElement('p');
+newPara.textContent = 'Another Paragraph';
+para.appendChild(newPara);</code></pre>
+                same result
+                <pre
+                  class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">$(para).addClass('important').append('&lt;p&gt;Another Paragraph&lt;/p&gt;');</code></pre>
               </li>
-              <li>
-                <h3>Accessing form elements</h3>
+              <li>jQuery
+                <p>A big advantage of using jQuery is its support for older browsers, particularly Internet Explorer. If
+                  you find yourself having to support these browsers then jQuery could save you a huge amount of time
+                  and headache. For example, classList isn't supported in older versions of Internet Explorer, so you'd
+                  have to write your own polyfill code to fix it. But if you used jQuery, you'd just have to use the
+                  addClass() method and it would make sure the code worked in most browsers.</p>
+                <ul>
+                  <li>Dollar Symbols</li>
+
+                  <p>The jQuery library uses the&nbsp;<code
+                      class="prism-code language-none rounded-md p-1 break-words">$</code>&nbsp;symbol as a convenient
+                    alias for the the global&nbsp;<code
+                      class="prism-code language-none rounded-md p-1 break-words">jQuery</code>&nbsp;object that
+                    contains all of jQuery's methods. This prevents the global scope from being polluted with any of
+                    jQuery&rsquo;s methods. The&nbsp;<code
+                      class="prism-code language-none rounded-md p-1 break-words">$</code>&nbsp;symbol has become
+                    synonymous with jQuery, and you can confidently expect that any mention of it implies that jQuery is
+                    being used.</p>
+                </ul>
               </li>
-              <li>
-                <h3>Form properties and methods</h3>
+              <li>Underscore & Lodash
+                <p><a class="" href="http://underscorejs.org/" target="_blank">Underscore</a>&nbsp;and&nbsp;<a class=""
+                    href="https://lodash.com/" target="_blank">Lodash</a>&nbsp;are very similar libraries of functions
+                  that provide additional functionality to the language. They both provide a large number of utility
+                  functions under the namespace&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">_</code>&nbsp;(this is where they get
+                  their name from as the&nbsp;<code
+                    class="prism-code language-none rounded-md p-1 break-words">_</code>&nbsp;character is often
+                  referred to as an 'underscore' or a 'lodash'). A number of JavaScript libraries list one of these as a
+                  core dependency.</p>
+                <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// flatten an array
+_.flatten([1, [2, [3, [4]], 5]]);
+&lt;&lt; [1, 2, [3, [4]], 5]
+
+// return the last element in an array
+_.last([1, 2, 3]);
+&lt;&lt; 3
+
+// randomly shuffle an array
+_.shuffle([1, 2, 3, 4]);
+// =&gt; [4, 1, 3, 2]</code></pre>
               </li>
-              <li>
-                <h3>Form events</h3>
+              <li>Advantages and Disadvantages of Libraries<ul>
+                  <li>A big advantage of utilizing a popular library is that it will be used by lots of people and
+                    thoroughly tested</li>
+                  <li>You need to include the code for the library as well as your own code. This increases the amount
+                    of code that needs to be downloaded by a website, which in some cases can cause performance issue
+                  </li>
+                </ul>
               </li>
-              <li>
-                <h3>Submitting a form</h3>
+              <li>When to Use a Library</li>
+              <li>Finding Libraries</li>
+            </ul>
+          </details>
+          <details>
+            <summary>Modular JavaScript</summary>
+            <ul>
+              <li>Coupling<ul>
+                  <li>connect()</li>
+                </ul>
               </li>
-              <li>
-                <h3>Retrieving and changing values from a form</h3>
+              <li>ES6 Modules<ul>
+                  <li>
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">export const PI = 3.1415926;</code></pre>
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">import { PI } from './pi.js';</code></pre>
+                    <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function square(x) {
+    return x * x;
+}
+
+function sum(array, callback) {
+    if(callback) {
+        array = array.map(callback);
+    }
+    return array.reduce((a,b) => a + b );
+}
+
+function variance(array) {
+    return sum(array,square)/array.length - square(mean(array))
+}
+
+function mean(array) {
+    return sum(array) / array.length;
+}
+
+export {
+    variance,
+    mean
+}</code></pre>
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">import  { mean, variance } from './stats.js';</code></pre>
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">import  { mean } from './stats.js';</code></pre>
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">import * as stats from './stats.js';</code></pre>
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">stats.mean([2,6,10]);</code></pre>
+                  </li>
+                </ul>
               </li>
-              <li>
-                <h3>Form validation</h3>
+              <li>Default Exports
+                <ul>
+                  <li>
+                    <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const PI = 3.145926;
+
+export default PI;</code></pre>
+                  </li>
+                  <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function square(x) {
+    return x * x;
+}
+
+export default square;</code></pre>
+                  <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const stats = {
+
+    square(x) {
+        return x * x;
+    },
+
+        sum(array, callback) {
+        if(callback) {
+            array = array.map(callback);
+        }
+            return array.reduce((a,b) => a + b );
+        },
+
+    mean(array) {
+        return this.sum(array) / array.length;
+    },
+
+    variance(array) {
+        return this.sum(array,this.square)/array.length - this.square(this.mean(array))
+    }
+}
+
+export default stats;</code></pre>
+
+                </ul>
               </li>
-              <li>
-                <h3>Our project ― add a form for answering the questions.</h3>
+              <li>Don't Use More Than One Default Export
+                <ul>
+                  <li>
+                    <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">import PI from './pi.js';
+import square from './square.js';
+import stats from './stats.js';</code></pre>
+                  </li>
+                </ul>
+              </li>
+              <li>Don't Use More Than One Default Exportul
+                <ul>
+                  <li>Aliases
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">import sq from './square.js';</code></pre>
+                    <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">sq(8)
+&lt;&lt; 64</code></pre>
+                  </li>
+                </ul>
+              </li>
+              <li>Node.js Modules
+                <ul>
+                  <li>
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">module.exports = x =&gt;  x * x;</code></pre>
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const square = require('./squareFunction');</code></pre>
+                    <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">square(6);
+&lt;&lt; 36</code></pre>
+
+                  </li>
+                </ul>
               </li>
             </ul>
-          </li>
-          <li>Read all of Ch12: Object Oriented Programming</li>
-          <li>Read the just the section on Modular JavaScript from Ch15: Modern JavaScript</li>
-          <li>exercises from Ch 6 and 10</li>
-        </ol>
+
+          </details>
+          <details>
+            <summary>MVC Framewords</summary>
+            <ul>
+              <li>Models are objects that implement the functionality for creating, reading, updating and deleting
+                (known as CRUD tasks) specific pieces of information about the application, as well as any other
+                associated logic and behavior. In a to-do list application, for example, there would be a task model
+                providing methods to access all the information about the tasks such as names, due dates and completed
+                tasks. This data will often be stored in a database or some other container.</li>
+              <li></li>
+              <li>Views provide a visual representation of the model showing all the relevant information. In a web
+                application, this would be the HTML displayed on a web page. Views also provide a way for users to
+                interact with an application, usually via forms. In a to-do list application, the views would display
+                the tasks as an HTML list with checkboxes that a user could tick to say a task had been completed.</li>
+              <li></li>
+              <li>Controllers link models and views together by communicating between them. They respond to events,
+                which are usually inputs from a user (entering some data into a form, for example), process the
+                information, then update the model and view accordingly. In a to-do list application, the controller
+                functions would respond to the event of a user clicking on a check box and then inform the model that a
+                task had been completed. The model would then update the information about that task.</li>
+              <ul>
+                <li>MV*
+                  <p>It is quite common to see the acronym MV* used to describe JavaScript frameworks, rather than MVC.
+                    This is because many JavaScript implementations do not strictly follow the controller pattern.
+                    Sometimes controller code is mixed into the views, and sometimes other patterns are used, such as
+                    Model-View-Presenter (MVP), Model-View-ViewModel (MVVM), and AngularJS, which calls itself a
+                    Model-View-Whatever (MVW) framework. These tend to be only slight variations on the MVC pattern, but
+                    for simplicity, MV* is used as a catch-all term. There has been a recent trend for many of these
+                    frameworks to embrace a more component-based architecture, which can be found in Angular (from
+                    version 2 onwards) and Ember 2.</p>
+                </li>
+              </ul>
+              <li>A Quick List Example
+                <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;!doctype html&gt;
+&lt;html lang='en'&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;
+    &lt;title&gt;MVC List&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form id="input"&gt;
+        &lt;label for='name'&gt;Name:&lt;/label&gt;
+        &lt;input type='text' name='name' autofocus required &gt;
+        &lt;button type='submit'&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;ul id='list'&gt;&lt;/ul&gt;
+    &lt;script src='main.js'&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">'use strict'
+
+const form = document.forms[0];
+
+class Item {
+    constructor(name) {
+        this.name = name;
+    }
+}</code></pre>
+                <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const controller = {
+    watch(form) {
+        form.addEventListener('submit', (event) =&gt; {
+        event.preventDefault(); // prevent the form from being submitted
+        this.add(form.name.value);
+        }, false);
+    },
+
+    add(name) {
+        const item = new Item(name);
+        view.render(item);
+    }
+};</code></pre>
+                <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const view = {
+    render(item) {
+        const list = document.getElementById('list');
+        const li = document.createElement('li');
+        li.innerHTML = item.name;
+        list.appendChild(li);
+        // reset the input field
+        form.name.value = '';
+    }
+};</code></pre>
+                <pre
+                  class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">controller.watch(form);</code></pre>
+                <ul>
+                  <li>Persistence
+                    <p>Most web applications will need some form of persistence to save the information held in the
+                      models in order to maintain state. This could be done using the Web Storage API that we covered in
+                      the last chapter. Another option that’s often used in real-world applications is to send a JSON
+                      representation of the model to a back-end database using Ajax whenever a model changes.</p>
+                  </li>
+                </ul>
+              </li>
+              <li>MV* Frameworks
+                <ul class="px-1 -mx-1" data-block="k01nwvzt">
+                  <li class="">
+                    <p class=""><a class="" href="http://aurelia.io/" target="_blank">Aurelia</a>&nbsp;is a modern
+                      framework that uses ES6, and focuses on letting you write dynamic web applications while keeping
+                      the implementation details in the background.</p>
+                  </li>
+                  <li class="">
+                    <p class=""><a class="" href="https://angular.io/" target="_blank">Angular</a>&nbsp;is a powerful
+                      framework by Google to make creating dynamic web applications easier. This is done by extending
+                      the HTML language using custom&nbsp;<code
+                        class="prism-code language-none rounded-md p-1 break-words">ng-</code>&nbsp;attributes.</p>
+                  </li>
+                  <li class="">
+                    <p class=""><a class="" href="http://emberjs.com/" target="_blank">Ember</a>&nbsp;is a framework
+                      designed to make building large web applications easier. It does this by using common conventions
+                      that avoid the need for lots of set-up code, though it can become more difficult if you
+                      don&rsquo;t follow these conventions.</p>
+                  </li>
+                </ul>
+                <div class="flex flex-col items-center absolute top-1 -ml-5 !my-0">&nbsp;</div>
+                <p class="px-1 -mx-1" data-block="k01nwvzu">The website&nbsp;<a class="" href="http://todomvc.com/"
+                    target="_blank">TodoMVC</a>&nbsp;has lots of examples of to-do list applications written in many of
+                  the popular MVC frameworks.</p>
+              </li>
+            </ul>
+
+          </details>
+          <details>
+            <summary>Templates</summary>
+            <pre
+              class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;h1&gt;Hello {{ name }}&lt;/h1&gt;</code></pre>
+            <pre
+              class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;h1&gt;Hello &lt;%= name %&gt;&lt;/h1&gt;</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const tasks = [
+    { name: 'Get Milk' },
+    { name: 'Go for a run' },
+    { name: 'Finish writing last chapter' },
+    { name: 'Phone bank' },
+    { name: 'Email Craig' }
+    ]</code></pre>
+            <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;ul&gt;
+{{#tasks}}
+&lt;li&gt;{{name}}&lt;/li&gt;
+{{/task}}
+&lt;/ul&gt;</code></pre>
+            <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;ul&gt;
+    &lt;% tasks.forEach(function(task) { %&gt;
+    &lt;li&gt;&lt;%= task.name %&gt;&lt;/li&gt;
+    &lt;% }); %&gt;
+    &lt;/ul&gt;
+    &lt;% } %&gt;&gt;</code></pre>
+            <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;ul&gt;
+    &lt;li&gt;Get Milk&lt;/li&gt;
+    &lt;li&gt;Go for a run&lt;/li&gt;
+    &lt;li&gt;Finish writing last chapter&lt;/li&gt;
+    &lt;li&gt;Phone bank&lt;/li&gt;
+    &lt;li&gt;Email Craig&lt;/li&gt;
+    &lt;/ul&gt;</code></pre>
+            <ul>
+              <li>popular templating languages</li>
+              <ul>
+                <li>Handlebars</li>
+                <li>Pug</li>
+                <li>EJS</li>
+                <li>Mustache</li>
+                <li>Nunjucks</li>
+              </ul>
+              <li>Web Components
+                <p class="">The W3C are working on developing a standard called&nbsp;<a class=""
+                    href="https://www.webcomponents.org/introduction" target="_blank">Web Components</a>&nbsp;that
+                  attempts to extend HTML and introduce new features such as templates, custom tags, the ability to
+                  import HTML partials, and a shadow DOM. The idea is to use it to develop modular and self-contained
+                  components that can be reused in different applications. The proposal is currently a living standard.
+                  The&nbsp;<a class="" href="https://www.polymer-project.org/" target="_blank">Polymer
+                    Project</a>&nbsp;is a JavaScript library that attempts to implement web components.</p>
+              </li>
+              <li>View Libraries
+                <ul>
+                  <li>popular alternatives
+                    <ul>
+                      <li>Svelte</li>
+                      <li>Inferno</li>
+                      <li>Deku</li>
+                      <li>Preact</li>
+                      <li>Virtual-DOM</li>
+                      <li>Moon</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
+          </details>
+          <details>
+            <summary>Package Managers</summary>
+            <ul>
+              <li>Package Managers
+                <ul>
+                  <li>package.json</li>
+                </ul>
+              </li>
+              <li>npm
+                <ul>
+                  <li>The Node Package Manager was developed soon after Node.js was introduced to allow JavaScript code
+                    to be shared by developers. It has since grown into the largest repository of code libraries
+                    available.</li>
+                </ul>
+              </li>
+              <li>Searching for Packages
+                <ul>
+                  <li>
+                    <pre
+                      class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">npm init</code></pre>
+                    <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">{
+"name": "project-x",
+"version": "1.0.0",
+"description": "",
+"main": "index.js",
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+},
+"author": "",
+"license": "ISC"
+}</code></pre>
+                  </li>
+                </ul>
+              </li>
+              <li>Installing Packages Locally
+                <pre
+                  class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">npm install --save lodash</code></pre>
+                <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">"dependencies": {
+    "lodash": "^4.17.4"
+}</code></pre>
+              </li>
+              <li>Dependencies
+                <pre
+                  class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">npm install --save-dev jest</code></pre>
+                <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">"devDependencies": {
+    "jest": "^20.0.4"
+}</code></pre>
+                <pre
+                  class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">npm install --save-dev jest@18.1.0</code></pre>
+                <ul>
+                  <li>Which Version?
+                    <p>It is usually best to just install the latest version of a package, although there may be times
+                      when you need to install a specific version of a package so it’s compatible with other packages.
+                    </p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </details>
+          <details>
+            <summary>Deplyoing JavaScript</summary>
+          </details>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>exercises from Ch 6 and 10</summary>
+        </details>
+      </li>
+      </ol>
       </details>
-            <details>
-        <summary>Team Activity</summary>
-        
-      </details>
+
+      <details>
+        <summary>Week 4 Office hour</summary>
+        <p>Doing with modules from now on</p>
+        <pre
+          class="line-numbers"><code class="language-html" data-prismjs-copy="Copy to clipboard">&lt;script src="./index.js" type="module"&gt;&lt;/script&gt;</code></pre>
+        <p>All my main codes in WDD230 use modules. I did not use type="module" but it works fine</p>
+        <p>
+          <a href="./todo/index.html">To Do</a>
+        </p>
+        <p>jquery is using classes</p>
+        <p>38:20 game sample</p>
+        <p>This is going to be useful, I've been looking for this for quite some time.</p>
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">class inputHandler {
+  constructor() {
+    this.keys = [];
+    window.addEventListener('keydown', e =&gt; {
+      if((e.key === 'ArrowUp' || e.key === 'ArrowDown' ||
+      e.key === ' ')
+      && this.keys.indexOf(e.key) &gt; -1 {
+          this.keys.splice(this.keys.indexOf(e.key), 1);
+      }
       
+    });
+    window.addEventListener('keyup', e =&gt; {
+      if(this.keys.indexOf(e.key) &gt; -1) {
+          this.keys.splice(this.keys.indexOf(e.key), 1);
+      }
+    });
+  }
+}</code></pre>
+      </details>
+      <details>
+        <summary>Team Activity</summary>
+        <p><a href="./team4/team4.html">Tic Tac Toe</a></p>
+        <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="grid-container"&gt;
+        &lt;div class="grid-item"&gt;&lt;/div&gt;
+        &lt;div class="grid-item"&gt;&lt;/div&gt;
+        &lt;div class="grid-item"&gt;&lt;/div&gt;
+        &lt;div class="grid-item"&gt;&lt;/div&gt;
+        &lt;div class="grid-item"&gt;&lt;/div&gt;
+        &lt;div class="grid-item"&gt;&lt;/div&gt;
+        &lt;div class="grid-item"&gt;&lt;/div&gt;
+        &lt;div class="grid-item"&gt;&lt;/div&gt;
+        &lt;div class="grid-item"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+    &lt;button type="button" id="Reset" onclick="resetPage()"&gt;Reset&lt;/button&gt;
+    &lt;script src="js.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.grid-container{
+    display: grid;
+    grid-template-columns: 160px 160px 160px;
+    grid-template-rows: 160px 160px 160px;
+}
+
+
+.grid-item{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center
+}
+
+.grid-item:nth-child(1){
+    border-top-style: none;
+    border-left-style: none;
+}
+
+.grid-item:nth-child(2){
+    border-top-style: none;   
+}
+
+.grid-item:nth-child(3){
+    border-top-style: none;  
+    border-right-style: none; 
+}
+
+.grid-item:nth-child(4){
+    border-left-style: none;   
+}
+
+.grid-item:nth-child(6){
+    border-right-style: none;   
+}
+
+.grid-item:nth-child(7){
+    border-left-style: none;  
+    border-bottom-style: none;    
+}
+
+.grid-item:nth-child(8){ 
+    border-bottom-style: none;    
+}
+
+.grid-item:nth-child(9){
+    border-right-style: none;  
+    border-bottom-style: none;    
+}</code></pre>
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const  player1 = "X";
+const  player2 = "O";
+let currentPlayer = player1;
+
+document.querySelector('.grid-item:nth-child(1)').addEventListener("click", () =&gt; {playInput(1)});
+document.querySelector('.grid-item:nth-child(2)').addEventListener("click", () =&gt; {playInput(2)});
+document.querySelector('.grid-item:nth-child(3)').addEventListener("click", () =&gt; {playInput(3)});
+document.querySelector('.grid-item:nth-child(4)').addEventListener("click", () =&gt; {playInput(4)});
+document.querySelector('.grid-item:nth-child(5)').addEventListener("click", () =&gt; {playInput(5)});
+document.querySelector('.grid-item:nth-child(6)').addEventListener("click", () =&gt; {playInput(6)});
+document.querySelector('.grid-item:nth-child(7)').addEventListener("click", () =&gt; {playInput(7)});
+document.querySelector('.grid-item:nth-child(8)').addEventListener("click", () =&gt; {playInput(8)});
+document.querySelector('.grid-item:nth-child(9)').addEventListener("click", () =&gt; {playInput(9)});
+
+
+function playInput(gridNumber) {
+    console.log(document.querySelector(`.grid-item:nth-child(${gridNumber})`).textContent === null) 
+        document.querySelector(`.grid-item:nth-child(${gridNumber})`).textContent = currentPlayer;
+        console.log(gridNumber)
+            if (currentPlayer == player1) {
+                currentPlayer = player2
+            }
+            else {
+                currentPlayer = player1
+            }
+    }
+</code></pre>
+      </details>
+
+
     </div>
   </main>
-  <footer></footer>
+  <footer>
+    <p>&copy; <span id="theYear"> </span> | <a class="bold" href="../index.html">Jayser Pilapil</a> | WDD 330 Notes
+    </p>
+  </footer>
+  <script src="../js/main.js"></script>
   <script src="script.js"></script>
   <script src="../js/prism.js"></script>
 </body>
 
 </html>
-
-
-
-

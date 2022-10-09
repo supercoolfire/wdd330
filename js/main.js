@@ -2,8 +2,8 @@ const main = {
   init: () => {
     let myDate = new Date();
     let myYear = myDate.getFullYear();
-
-    if (document.getElementsByName("title").textContent == "Portfolio") {
+    if (document.title == "Portfolio") {
+      console.log("yey")
       main.fourthPolio();
     }
     
