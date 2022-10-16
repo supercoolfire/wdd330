@@ -31,6 +31,18 @@ const main = {
         label: "Week 4 notes",
         url: "week4/index.html",
       },
+      {
+        label: "Week 5 notes",
+        url: "week5/index.html",
+      },
+      {
+        label: "Week 6 notes",
+        url: "week6/index.html",
+      },
+      {
+        label: "Week 7 notes",
+        url: "week7/index.html",
+      },
     ];
     
     readLinks(links);
