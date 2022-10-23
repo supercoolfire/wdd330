@@ -36,8 +36,8 @@ const main = {
         url: "week5/index.html",
       },
       {
-        label: "Week 6 notes",
-        url: "week6/index.html",
+        label: "Week 6 To Do App",
+        url: "todo/index.html",
       },
       {
         label: "Week 7 notes",
