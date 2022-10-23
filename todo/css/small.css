@@ -1,0 +1,200 @@
+  :root {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+  }
+  #rickRoll {
+    cursor: pointer;
+  }
+  body {
+    max-width: minmax(90%, 80%);
+  }
+  h1 {
+    text-align: center;
+    outline: 1px dashed orange;
+    background-color: var(--background);
+  }
+  main, foot-wrap {
+    display: block;
+    /* width: 100%; */
+    outline: 1px dashed blue;
+    padding: 2rem;
+  }
+  #todoList {
+    font-size: 1em;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    max-height: 90%;
+  }
+
+  #todoList li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    padding: .5rem;
+  }
+  #todoList li:hover label {
+    background-color: #fff203c9;
+    cursor: pointer;
+  }
+  #todoList li:nth-of-type(even) {
+    background-color: var(--box-shaddow-1);
+  }
+  #todoList li:nth-of-type(odd) {
+    background-color: var(--background);
+  }
+
+  #todoList li>input {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    opacity: 0;
+  }
+
+  #todoList li>input::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    border: 1px solid;
+    border-radius: 2px;
+    opacity: 1;
+  }
+
+  #todoList li>label {
+    flex: 1 0 10em;
+  }
+
+  #todoList li>button {
+    display: flex;
+    flex: 0 0 30px;
+    border: 0;
+    background-color: transparent;
+  }
+  #todoList li>button:hover {
+    float:left;
+    z-index: 10;
+    font-size: 1.2rem;
+  }
+
+  /* FILTER */
+  :root {
+    --linear-back-1: #e3fa68;
+    --linear-back-2: #bfd357;
+    --box-shaddow-1: #aec050;
+    --box-shaddow-2: #faff72;
+    --background: #d4ea61;
+  }
+
+  ul#filter {
+    display: block;
+    list-style-type: none;
+    background: linear-gradient(145deg, var(--linear-back-1), var(--linear-back-2));
+    width: 100%;
+    /* margin: 0 auto; */
+    padding: .5rem;
+    outline: 1px dashed red;
+  }
+
+  ul#filter li {
+    text-align: center;
+    padding: .7rem;
+    cursor: pointer;
+    border-radius: 50px;
+    background: linear-gradient(145deg, var(--linear-back-1), var(--linear-back-2));
+    box-shadow: 8px 8px 12px var(--box-shaddow-1),
+      -8px -8px 12px var(--box-shaddow-2);
+    margin: .5rem auto;
+  }
+
+  ul#filter li:hover {
+    background: var(--background);
+    box-shadow: 8px 8px 12px var(--box-shaddow-1),
+      -8px -8px 12px var(--box-shaddow-2);
+    /* font-weight: bold; */
+  }
+
+  ul#filter li:active {
+    background: linear-gradient(145deg, var(--linear-back-2) var(--linear-back-1));
+    box-shadow: 8px 8px 12px var(--box-shaddow-1),
+      -8px -8px 12px var(--box-shaddow-2);
+  }
+
+  ul#filter li:nth-of-type(1) {
+    cursor: unset;
+    background: unset;
+    box-shadow: unset;
+    border: 0;
+  }
+
+  ul#filter li:nth-of-type(1):hover {
+    /* font-weight: unset; */
+  }
+
+  .foot-wrap {
+    outline: 1px dashed green;
+    display: flex;
+    background-color: var(--background);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    padding: .5rem 2rem;
+    
+    justify-content: space-between; 
+    gap: .5rem;
+
+  }
+  .foot-wrap input {
+    padding: .5rem;
+    width: 100%;
+    border-radius: .5rem;
+  }
+  .foot-wrap button {
+    border: 0;
+    cursor: pointer;
+    border-radius: 50px;
+    background: linear-gradient(145deg, var(--linear-back-1), var(--linear-back-2));
+    box-shadow: 8px 8px 12px var(--box-shaddow-1),
+      -8px -8px 12px var(--box-shaddow-2);
+  }
+  .foot-wrap button:hover {
+    background: var(--background);
+    box-shadow: 8px 8px 12px var(--box-shaddow-1),
+      -8px -8px 12px var(--box-shaddow-2);
+  }
+  .foot-wrap button:active {
+    background: linear-gradient(145deg, var(--linear-back-2) var(--linear-back-1));
+    box-shadow: 8px 8px 12px var(--box-shaddow-1),
+      -8px -8px 12px var(--box-shaddow-2);
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
