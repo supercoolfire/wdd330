@@ -116,6 +116,8 @@ export default class ToDos {
     bindTouch("#active", this.showActive.bind(this, false));
     bindTouch("#completed", this.showCompleted.bind(this, false));
     this.listToDos();
+    
+    this.filter = "all";
   }
 
   newToDo() {
@@ -158,13 +160,20 @@ export default class ToDos {
     renderList(getToDos(this.key), this.listElement, this, hidden);
   }
 
+  
+  applyFilter(method){
+    this.filter = method;
+  }
+
   showActive(hidden = false) {
+    this.applyFilter("active");
     let newList = [];
     let toDo = getToDos(this.key);
     newList = toDo.filter((li) => li.completed === false);
     renderList(newList, this.listElement, this, hidden);
   }
   showCompleted(hidden = false) {
+    this.applyFilter("completeed");
     let newList = [];
     let toDo = getToDos(this.key);
     newList = toDo.filter((li) => li.completed === true);
@@ -183,9 +192,9 @@ function numToDoLeft() {
       }
     }
     if (counter !== 1) {
-      tasksLeft.innerHTML = `${counter} Tasks LeftTodos<span class="tooltiptext">Created by Jayser Pilapil</span>`;
+      tasksLeft.innerHTML = `${counter} Tasks Left<span class="tooltiptext">Created by Jayser Pilapil</span>`;
     } else {
-      tasksLeft.innerHTML = `${counter} Task LeftTodos<span class="tooltiptext">Created by Jayser Pilapil</span>`;
+      tasksLeft.innerHTML = `${counter} Task Left<span class="tooltiptext">Created by Jayser Pilapil</span>`;
     }
   }
 }
