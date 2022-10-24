@@ -37,6 +37,7 @@
     /* outline: 1px dashed blue; */
     padding: 2rem;
     margin-top: 90px;
+    margin-right: 10px;
   }
   #todoList {
     font-size: 1em;
