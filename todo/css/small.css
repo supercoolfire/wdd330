@@ -10,13 +10,13 @@
   }
   h1 {
     text-align: center;
-    outline: 1px dashed orange;
+    /* outline: 1px dashed orange; */
     background-color: var(--background);
   }
   main, foot-wrap {
     display: block;
     /* width: 100%; */
-    outline: 1px dashed blue;
+    /* outline: 1px dashed blue; */
     padding: 2rem;
   }
   #todoList {
@@ -97,7 +97,7 @@
     width: 100%;
     /* margin: 0 auto; */
     padding: .5rem;
-    outline: 1px dashed red;
+    /* outline: 1px dashed red; */
   }
 
   ul#filter li {
@@ -136,7 +136,7 @@
   }
 
   .foot-wrap {
-    outline: 1px dashed green;
+    /* outline: 1px dashed green; */
     display: flex;
     background-color: var(--background);
     position: fixed;
