@@ -6,18 +6,37 @@
     cursor: pointer;
   }
   body {
+    margin: 0;
     max-width: minmax(90%, 80%);
+  }
+  header {
+    padding: .5rem;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    background-color: var(--background);
+    margin: 0;
+  }
+  header a, header a:focus, header a:active {
+    text-decoration: none;
+    color: inherit;
   }
   h1 {
     text-align: center;
     /* outline: 1px dashed orange; */
-    background-color: var(--background);
+  }
+  main {
+    margin-bottom: 23px;
   }
   main, foot-wrap {
+    position: inherit;
     display: block;
     /* width: 100%; */
     /* outline: 1px dashed blue; */
     padding: 2rem;
+    margin-top: 90px;
   }
   #todoList {
     font-size: 1em;
@@ -95,7 +114,7 @@
     list-style-type: none;
     background: linear-gradient(145deg, var(--linear-back-1), var(--linear-back-2));
     width: 100%;
-    /* margin: 0 auto; */
+    margin: 0 auto;
     padding: .5rem;
     /* outline: 1px dashed red; */
   }
