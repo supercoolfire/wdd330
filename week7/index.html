@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description"
+    content="Notes for Jayser Pilapil in WDD 330: Web Frontend Development II at Brigham Young University - Idaho">
+<meta name="author" content="Jayser Pilapil">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/prism.css">
+<link rel="stylesheet" href="../css/small.css">
+<style>
+.rounded-md {
+  border-radius: 0.375rem;
+}
+.p-1 {
+  padding: 0.25rem;
+}
+.break-words {
+  overflow-wrap: break-word;
+}
+</style>
+<title>Week 7 Notes</title>
+</head>
+
+<body>
+<header>
+  <h1 id="rickRoll">Week 7</h1>
+  <a href="../index.html"> 🡠 Back</a> </header>
+<main>
+  <div class="accordion">
+    <details>
+      <summary>Chapter 11 Further Functions </summary>
+      <details><summary>Function Properties and Methods</summary>
+      <ul>
+        <li>all functions have a length property that returns the number of parameters
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function square(x) {
+    return x*x;
+}
+square.length
+&lt;&lt; 1</code></pre>
+        </li>
+        <li>Call and Apply Methods
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function sayHello(){
+    return `Hello, my name is ${ this.name }`;
+}
+
+const clark = { name: 'Clark' };
+const bruce = { name: 'Bruce' };
+
+sayHello.call(clark);
+&lt;&lt; 'Hello, my name is Clarke'
+
+sayHello.call(bruce);
+&lt;&lt; 'Hello, my name is Bruce'</code></pre>
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// If the function that’s called requires any parameters, these need to be provided as arguments after the first argument, which is always the value of this.
+function sayHello(greeting='Hello'){
+    return `${ greeting }, my name is ${ this.name }`;
+}
+
+sayHello.call(clark, 'How do you do');
+&lt;&lt; 'How do you do, my name is Clark'
+
+sayHello.call(bruce);
+&lt;&lt; 'Hello, my name is Bruce'</code></pre>
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// If a function doesn’t refer to an object as this in its body, it can still be called using the call() method, but you need provide null as its first argument
+square.call(null, 4)
+&lt;&lt; 16</code></pre>
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// arguments of the function are provided as an array, even if there is only one argument:
+square.apply(null, [4])
+&lt;&lt; 16</code></pre>
+        </li>
+        <li>Custom Properties
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">square.description = 'Squares a number that is provided as an argument'
+&lt;&lt; 'Squares a number that is provided as an argument'</code></pre>
+        <ul><li>Memoization
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// If a function takes some time to compute a return value, we can save the result in a cache property.
+function square(x){
+    square.cache = square.cache || {};
+    if (!square.cache[x]) {
+        square.cache[x] = x*x;
+    }
+    // return the value from the cache, rather than having to compute the result again
+    return square.cache[x]
+}</code></pre>
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// cache object stores the results
+square(3);
+&lt;&lt; 9
+
+square(-11);
+&lt;&lt; 121
+
+square.cache;
+&lt;&lt; {"3": 9, "-11": 121}</code></pre>
+          </li></ul></li>
+        
+      </ul>
+      
+      </details>
+      <details><summary>Immediately Invoked Function Expressions</summary>
+        
+      <ul>
+<li class="">
+<p class="">An&nbsp;<strong class="">Immediately Invoked Function Expression</strong>&nbsp;&ndash; or IIFE &ndash; (pronounced 'iffy') is an anonymous function that, as the name suggests, is invoked as soon as it&rsquo;s defined. This is easily achieved by placing parentheses at the end of the function definition (remember we use parentheses to invoke a function). The function also has to be made into an expression, which is done by placing the whole declaration inside parentheses, as in this example:</p>
+
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">(function(){
+const temp = 'World';
+console.log(`Hello ${temp}`);
+})();
+&lt;&lt; 'Hello World'</code></pre></li>
+        <li>Temporary Variables
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">let a = 1;
+let b = 2;
+
+(()=&gt;{
+// temp, which only exists while the IIFE is invoked:
+    const temp = a;
+    a = b;
+    b = temp;
+})();
+
+a;
+&lt;&lt; 2
+
+b;
+&lt;&lt; 1
+
+console.log(temp);
+&lt;&lt; Error: "temp is not defined"</code></pre>
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">let [a,b] = [1,2];
+[a,b] = [b,a];
+
+a;
+&lt;&lt; 2
+
+b;
+&lt;&lt; 1</code></pre>
+        </li>
+        <li>Initialization Code
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// Because the code is only run once, there’s no need to create any reusable, named functions, and all the variables will also be temporary
+(function() {
+    const name = 'Peter Parker'; // This might be obtained from a cookie in reality
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday', 'Friday','Saturday'];
+    const date = new Date(),today = days[date.getDay()];
+    console.log(`Welcome back ${name}. Today is ${today}`);
+
+})();
+&lt;&lt; 'Welcome back Peter Parker. Today is Tuesday'</code></pre>
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// this can be achieved in ES6 by simply placing the code inside a block
+{
+    const name = 'Peter Parker'; // This might be obtained from a cookie in reality
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday', 'Friday','Saturday'];
+    const date = new Date(),today = days[date.getDay()];
+    console.log(`Welcome back ${name}. Today is ${today}`);
+}
+&lt;&lt; 'Welcome back Peter Parker. Today is Tuesday'</code></pre>
+        </li>
+        <li><ul class="px-1 -mx-1" data-block="k01nwvmy">
+<li class="">
+<div class="relative" data-interactive="true">
+<p class="px-1 -mx-1" data-block="k01nwv08">In the last chapter we discussed using strict mode to avoid any sloppy coding practices. One of the problems with simply placing&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">'use strict'</code>&nbsp;at the beginning of a file is that it will enforce strict mode on all the JavaScript in the file, and if you&rsquo;re using other people&rsquo;s code, there&rsquo;s no guarantee that they&rsquo;ve coded in strict mode.</p>
+</div>
+<div class="relative" data-interactive="true">
+<div class="flex flex-col items-center absolute top-1 -ml-5 !my-0">&nbsp;</div>
+<p class="px-1 -mx-1" data-block="k01nwv09">To avoid this, the recommended way to use strict mode is to place all your code inside an IIFE, like so:</p>
+</div>
+</li>
+</ul><pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">Safe Use of Strict Mode
+        (function() {
+    'use strict';
+
+// All your code would go inside this function
+
+})();</code></pre>
+        </li>
+        <li>Creating Self-contained Code Blocks
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// enclose a block of code inside its own private scope so it doesn’t interfere with any other part of the program
+//code can be added or removed separatel
+(function() {
+    // block A
+    const name = 'Block A'; // don’t interfere with each other.
+    console.log(`Hello from ${name}`);
+    }());
+
+    (function() {
+    // block B
+    const name = 'Block B'; // don’t interfere with each other.
+    console.log(`Hello from ${name}`);
+}());
+
+&lt;&lt;  Hello from Block A
+    Hello from Block B</code></pre></li></ul>
+      </details>
+      <details><summary>Functions that Define and Rewrite Themselves</summary>
+      <ul>
+        <li><pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function party(){
+    console.log('Wow this is amazing!');
+    party = function(){ //  function is able to not only call itself, but define itself, and even redefine itself
+        console.log('Been there, got the T-Shirt');
+    }
+}</code></pre>
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// This logs a message in the console, then redefines itself to log a different message in the console
+function party() {
+    console.log('Been there, got the T-Shirt');
+}
+
+// Every time the function is called after the first time, it will log the message 'Been there, got the T-Shirt'
+party();
+&lt;&lt; 'Wow this is amazing!'
+
+party();
+&lt;&lt; 'Been there, got the T-Shirt'
+
+party();
+&lt;&lt; 'Been there, got the T-Shirt'</code></pre>
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function party(){
+    console.log('Wow this is amazing!');
+    party = function(){
+        console.log('Been there, got the T-Shirt');
+    }
+}
+
+const beachParty = party; // note that the party function has not been invoked
+
+beachParty(); // the party() function has now been redefined, even though it hasn't been called explicitly
+&lt;&lt; 'Wow this is amazing!'
+
+party(); 
+&lt;&lt; 'Been there, got the T-Shirt'
+
+beachParty(); // but this function hasn't been redefined
+&lt;&lt; 'Wow this is amazing!'
+
+beachParty(); // no matter how many times this is called it will remain the same
+&lt;&lt; 'Wow this is amazing!'</code></pre>
+          <ul class="px-1 -mx-1" data-block="k01nwvmy">
+<li class="">
+<div class="relative" data-interactive="true">
+<h4 class="">Losing Properties</h4>
+<p class="">If any properties have previously been set on the function, these will be lost when the function redefines itself. In the previous example, we can set a&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">music</code>&nbsp;property, and see that it no longer exists after the function has been invoked and redefined:</p>
+</div>
+</li>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function party() {
+    console.log('Wow this is amazing!');
+    party = function(){
+    console.log('Been there, got the T-Shirt');
+    }
+}
+
+party.music = 'Classical Jazz'; // set a property of the function
+
+party();
+&lt;&lt; "Wow this is amazing!"
+
+party.music; // function has now been redefined, so the property doesn't exist
+&lt;&lt; undefined</code></pre>
+</ul>
+          <li>Init-Time Branching
+            technique can be used with the feature detection
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function ride(){
+    if (window.unicorn) { // fictional unicorn object that’s yet to have full support in all browsers
+        ride = function(){
+        // some code that uses the brand new and sparkly unicorn methods
+        return 'Riding on a unicorn is the best!';
+        }
+    } else {
+        ride = function(){
+        // some code that uses the older pony methods
+        return 'Riding on a pony is still pretty good';
+        }
+    }
+    return ride();
+}</code></pre>
+        </li>
+          
+          
+          
+          
+        
+        
+        
+        
+        
+        </li>
+        </ul>
+      </details>
+    </details>
+    <details>
+      <summary>Chapter 13 Ajax</summary>
+      <details>
+        <summary>The Fetch API</summary>
+        <ul>
+          <li>Basic Usage
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">fetch('https://example.com/data')
+.then( // code that handles the response )
+.catch( // code that runs if the server returns an error )</code></pre>
+          </li>
+          <li>Response Interface
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const url = 'https:example.com/data';
+
+fetch(url)
+.then((response) =&gt; {
+    if(response.ok) {
+        return response;
+    }
+    throw Error(response.statusText);
+})
+.then( response =&gt; // do something with response )
+.catch( error =&gt; console.log('There was an error!') )</code></pre>
+            <ul class="px-1 -mx-1" data-block="k01nwvm4">
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">headers</code>&nbsp;&ndash; A Headers object (see later section) containing any headers associated with the response</li>
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">url</code>&nbsp;&ndash; A string containing the URL of response</li>
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">redirected</code>&nbsp;&ndash; A boolean value that specifies if the response is the result of a redirect</li>
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">type</code>&nbsp;&ndash; A string value of 'basic', 'cors', 'error' or 'opaque'. A value of 'basic' is used for a response from the same domain. A value of 'cors' means the data was received from a valid cross-origin request from a different domain. A value of 'opaque' is used for a response received from 'no-cors' request from another domain, which means access to the data will be severely restricted. A value of 'error' is used when a network error occurs.</li>
+            </ul>
+          </li>
+          <li>Redirects
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">fetch(url)
+.then( response =&gt; response.redirect(newURL)); // redirects to another URL
+.then( // do something else )
+.catch( error =&gt; console.log('There was an error: ', error))</code></pre>
+          </li>
+          <li>Text Responses
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">fetch(url)
+.then( response =&gt; response.text() ); // transforms the text stream into a JavaScript string
+.then( text =&gt; console.log(text) )
+.catch( error =&gt; console.log('There was an error: ', error))</code></pre>
+          </li>
+          <li>File Responses
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">fetch(url)
+.then( response =&gt; response.blob() ); // transforms the data into a blob object
+.then( blob =&gt; console.log(blob.type) )
+.catch( error =&gt; console.log('There was an error: ', error))</code></pre>
+            <ul class="px-1 -mx-1" data-block="k01nwvm4">
+              <li class="">The&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">blob()</code>&nbsp;method is used to read a file of raw data, such as an image or a spreadsheet. Once it has read the whole file, it returns a promise that resolves with a&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">blob</code>&nbsp;object.</li>
+            </ul>
+          </li>
+          <li>JSON Responses
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">fetch(url)
+.then( response =&gt; response.json() ); // transforms the JSON data into a JavaScript object
+.then( data =&gt; console.log(Object.entries(data)) )
+.catch( error =&gt; console.log('There was an error: ', error))</code></pre>
+            <p>&nbsp;In the example below, the&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">Object.entries()</code>&nbsp;method is used to view the key and value pairs in the returned object.</p>
+          </li>
+          <li>Creating Response Objects
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const response = new Response( 'Hello!', {
+    ok: true,
+    status: 200,
+    statusText: 'OK',
+    type: 'cors',
+    url: '/api'
+});</code></pre>
+          </li>
+          <li>Request Interface
+            <ul class="px-1 -mx-1" data-block="k01nwvmy">
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">url</code>&nbsp;&ndash; The URL of the requested resource (the only property that is required).</li>
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">method</code>&nbsp;&ndash; a string that specifies which HTTP method should be used for the request. By default, this is 'GET'.</li>
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">headers</code>&nbsp;&ndash; This is a&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">Headers</code>&nbsp;object (see later section) that provides details of the request's headers.</li>
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">mode</code>&nbsp;&ndash; Allows you to specify if CORS is used or not. CORS is enabled by default.</li>
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">cache</code>&nbsp;&ndash; Allows you to specify how the request will use the browser's cache. For example, you can force it to request a resource and update the cache with the result, or you can force it to only look in the cache for the resource.</li>
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">credentials</code>&nbsp;&ndash; Lets you specify if cookies should be allowed with the request.</li>
+              <li class=""><code class="prism-code language-none rounded-md p-1 break-words">redirect</code>&nbsp;&ndash; Specifies what to do if the response returns a redirect. There&rsquo;s a choice of three values: 'follow' (the redirect is followed), 'error' (an error is thrown) or 'manual' (the user has to click on a link to follow the redirect).</li>
+            </ul>
+            Hypertext Transfer Protocol
+            <ul class="px-1 -mx-1" data-block="k01nwvmy">
+              <li class="">
+                <p class="">The Web is built upon the Hypertext Transfer Protocol, or HTTP. When a client (usually a browser) makes a request to a server, it contains information about which HTTP verb to use.&nbsp;<a class="" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods" target="_blank">HTTP verbs, also known as HTTP methods</a>&nbsp;are the what HTTP uses to tell the server what type of request is being made, which then determines the server will deal with the request.</p>
+                <p class="">The five most commonly used verbs when dealing with resources on the web are:</p>
+                <ul class="">
+                  <li class="">
+                    <p class="">GET requests to retrieve resources</p>
+                  </li>
+                  <li class="">
+                    <p class="">POST requests, usually used to create a resource but can actually perform any task</p>
+                  </li>
+                  <li class="">
+                    <p class="">PUT requests to&nbsp;<em class="">upsert</em>, which means insert a resource or update it entirely</p>
+                  </li>
+                  <li class="">
+                    <p class="">PATCH requests to make partial updates to a resource</p>
+                  </li>
+                  <li class="">
+                    <p class="">DELETE requests to delete a resources.</p>
+                  </li>
+                </ul>
+                <p class="">By default, a link in a web page will make a GET request. Forms are also submitted using a GET request by default, but they will often use a POST request.</p>
+                <p class="">This&nbsp;<a class="" href="https://robm.me.uk/web-development/2013/09/20/http-verbs.html" target="_blank">excellent blog post</a>&nbsp;by Rob Miller explains each of these verbs in more depth if you're interested in learning more about them.</p>
+              </li>
+            </ul>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const request = new Request('https://example.com/data', //first argument, and is required
+{ // he second argument is an object
+    method: 'GET',
+    mode: 'cors',
+    redirect: 'follow',
+    cache: 'no-cache'
+});</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">fetch(request)
+.then( // do something with the response )
+.catch( // handle any errors)</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// URL and object directly as arguments  
+fetch('https://example.com/data', {
+    method: 'GET',
+    mode: 'cors',
+    redirect: 'follow',
+    cache: 'no-cache'
+})
+.then( // do something with the response )
+.catch( // handle any errors)</code></pre>
+          </li>
+          <li>Headers Interface
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// used to create a Headers object, which can then be added as a property of Request and Response objects
+const headers = new Headers();</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// The constructor function can be provided with an optional argument containing any initial header values
+const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// has() – Can be used to check if the headers object contains the header provided as an argument
+headers.has('Content-Type');
+&lt;&lt; true</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// get() - Returns the value of the header
+headers.get('Content-Type');
+&lt;&lt; 'text/plain'</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">//  create a new header with the value provided as an argument if it does not already exist
+headers.set('Content-Type', 'application/json');</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// Adds a new header to the headers object
+headers.append('Accept-Encoding','gzip,deflate');</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// Removes the header provided as an argument
+headers.delete('Accept-Encoding')</code></pre>
+            <ul class="px-1 -mx-1" data-block="k01nwvmy">
+              <li class="">
+                <p class=""><code class="prism-code language-none rounded-md p-1 break-words">keys()</code>,&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">values()</code>&nbsp;and&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">entries()</code>&nbsp;&ndash; Iterators that can be used to iterate over the headers key, values or entries (key and value pairs).</p>
+              </li>
+            </ul>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">for(const entry of headers.entries(){
+console.log(entry);
+}
+&lt;&lt; [ 'Content-Type', 'application/json' ]</code></pre>
+          </li>
+          <li>Putting It All Together
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const url = 'https:example.com/data';
+const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })
+
+const request = (url,{
+    headers: headers
+})
+
+fetch(request)
+.then( function(response) {
+    if(response.ok) {
+        return response;
+    }
+    throw Error(response.statusText);
+})
+.then( response =&gt; // do something with response )
+.catch( error =&gt; console.log('There was an error!') )</code></pre>
+          </li>
+        </ul>
+      </details>
+      <details>
+        <summary>Receiving Information</summary>
+        <ul>
+          <li>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">&lt;!doctype html&gt;
+&lt;html lang='en'&gt;
+&lt;head&gt;
+&lt;meta charset='utf-8'&gt;
+&lt;title&gt;Ajax Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;button id='number'&gt;Number Fact&lt;/button&gt;
+&lt;button id='chuck'&gt;Chuck Norris Fact&lt;/button&gt;
+&lt;div id='output'&gt;
+    Ajax response will appear here
+&lt;/div&gt;
+&lt;script src='main.js'&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+            <ul class="px-1 -mx-1" data-block="k01nwvmy">
+              <li class="">
+                <p class="">The first is&nbsp;<a class="" href="http://numbersapi.com/" target="_blank">NumbersAPI</a>, which returns facts about random numbers as a text string. The second is&nbsp;<a class="" href="https://api.chucknorris.io/" target="_blank">chucknorris.io</a>, which returns a JSON string, containing a random satirical factoid about everybody's favorite hard man, Chuck Norris.</p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// main.js
+const textButton = document.getElementById('number');
+const apiButton = document.getElementById('chuck');
+const outputDiv = document.getElementById('output');
+
+// assign some URLs to variables:
+const textURL = 'http://numbersapi.com/random';
+const apiURL = 'https://api.chucknorris.io/jokes/random';
+
+// assign an event handler to each button
+textButton.addEventListener('click', () =&gt; {
+    fetch(textURL)
+    .then( response =&gt; {
+        outputDiv.innerHTML = 'Waiting for response...';
+    if(response.ok) {
+        return response;
+    }
+        throw Error(response.statusText);
+    })
+    .then( response =&gt; response.text() )
+    .then( text =&gt; outputDiv.innerText = text )
+    .catch( error =&gt; console.log('There was an error:', error))
+},false);
+
+// Chuck Norris Fact button
+apiButton.addEventListener('click', () =&gt; {
+    fetch(apiURL)
+    .then( response =&gt; {
+        outputDiv.innerHTML = 'Waiting for response...';
+    if(response.ok) {
+        return response;
+    }
+    throw Error(response.statusText);
+    })
+    .then( response =&gt; response.json() )
+    .then( data =&gt; outputDiv.innerText = data.value )
+    .catch( error =&gt; console.log('There was an error:', error))
+},false);
+</code></pre>
+          </li>
+        </ul>
+      </details>
+      <details>
+        <summary>Sending Information</summary>
+        <ul>
+          <li class="">
+            <p class="">Unfortunately, we don't have a database to save our tasks to, so we're going to have to use a dummy site called&nbsp;<a class="" href="https://jsonplaceholder.typicode.com/" target="_blank">JSONPlaceholder</a>. This spoofs the process of sending JSON data to a server, then receiving JSON data in response. It has a number of fake APIs that can be used to create fake examples of posts, comments, albums, photos, todos and users. We'll be using the fake todo API</p>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">&lt;!doctype html&gt;
+&lt;html lang='en'&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;
+    &lt;title&gt;To Do List&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form id='todo' action='https://jsonplaceholder.typicode.com/todos' method='POST'&gt;
+        &lt;input type='text' name='task'  placeholder='Add Task' autofocus required&gt;
+        &lt;button type='submit'&gt;Add Task&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;script src='main.js'&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// main.js
+const form = document.forms['todo'];
+form.addEventListener('submit', addTask, false);
+
+function addTask(event) {
+    event.preventDefault();
+    const number = form.task.value;
+    const task = {
+        userId: 1,
+        title: form.task.value,
+        completed: false
+    }
+    const data = JSON.stringify(task);
+    const url = 'https://jsonplaceholder.typicode.com/todos';
+
+    const headers = new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    });
+    const request = new Request(url,
+    {
+        method: 'POST',
+        header: headers,
+        body: data
+    }
+    )
+
+    fetch(request)
+    .then( response =&gt; response.json() )
+    .then( task =&gt; console.log(`Task saved with an id of ${task.id}`) )
+    .catch( error =&gt; console.log('There was an error:', error))
+
+}</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">&lt;&lt; Task saved with an id of 201</code></pre>
+          </li>
+          <li>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const request = new Request(form.action,
+{
+    method: form.method,
+    header: headers,
+    body: data
+}
+)</code></pre>
+          </li>
+        </ul>
+      </details>
+      <details>
+        <summary>FormData</summary>
+        <ul class="px-1 -mx-1" data-block="k01nwvmy">
+          <li class="">
+            <p class="">The Fetch API includes the&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">FormData</code>&nbsp;interface, which makes it much easier to submit information in forms using Ajax.</p>
+          </li>
+        </ul>
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const data = new FormData();</code></pre>
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">const form = document.forms['todo'];
+
+form.addEventListener('submit', addTask, false);
+
+function addTask(event) {
+    event.preventDefault();
+    const task = new FormData(form);
+    const url = `http://echo.jsontest.com/id/1/title/${form.task.value}`;
+    const headers = new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    });
+    const request = new Request(url,
+    {
+        method: 'POST',
+        mode: 'cors',
+        header: headers,
+        body: JSON.stringify(task)
+    }
+    )
+
+    fetch(request)
+    .then( response =&gt; response.json() )
+    .then( data =&gt; console.log(`${data.title} saved with an id of ${data.id}`) )
+    .catch( error =&gt; console.log('There was an error:', error))
+
+}</code></pre>
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// It’s also possible to add data to the form data instance as key-value pairs using the append() method:
+data = new FormData(); // no form provided as an argument creates an empty form data instance
+
+data.append('height', 75);</code></pre>
+      </details>
+      <details>
+        <summary>A Living Standard</summary>
+        <ul class="px-1 -mx-1" data-block="k01nwvmy">
+          <li class="">
+            <p class="">The jQuery library is a good option for this &ndash; it has the generic&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">ajax()</code>&nbsp;method that can be used in a very similar way to the&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">fetch()</code>&nbsp;method. For example, if you want to get the data from the number API, you would use the following code:</p>
+          </li>
+        </ul>
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">$.ajax('http://numbersapi.com/random')
+.done(text =&gt; outputDiv.innerHTML = text );</code></pre>
+      </details>
+    </details>
+    <details>
+      <summary>Team Activity </summary>
+      <ul>
+        <li>index.html
+          <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Great Hikes (dynamic DOM example)&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+    &lt;style&gt;
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+      main &gt; h1 {
+        text-align: center;
+        background-color: indianred;
+        padding: 1em;
+        margin-top: 0;
+        margin-bottom: -0.5em;
+      }
+      img {
+        max-width: 100%;
+      }
+      .hidden {
+        display: none;
+      }
+      .hikeStyles {
+        padding: 0;
+        margin: 1em 0;
+        list-style-type: none;
+      }
+      .hikeStyles div {
+        padding: 0 0.5em;
+      }
+      .hikeStyles li &gt; h2 {
+        text-align: center;
+        background-color: burlywood;
+        margin-bottom: 0.5em;
+      }
+
+      .light {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .light &gt; h2 {
+        width: 100%;
+        flex: 1 0 auto;
+      }
+
+      .light &gt; div {
+        width: 40%;
+        margin-left: 1em;
+        flex: 1 1 auto;
+      }
+      .light h3 {
+        margin-bottom: -0.5em;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;main&gt;
+      &lt;h1&gt;Great hikes&lt;/h1&gt;
+      &lt;ul id="hikes" class="hikeStyles"&gt;&lt;/ul&gt;
+    &lt;/main&gt;
+
+    &lt;script src="app5.js" type="module"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </li>
+        <li>app5.js
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">import Hikes from './hikes.js';
+//on load grab the array and insert it into the page
+const myHikes = new Hikes('hikes');
+window.addEventListener('load', () =&gt; {
+  myHikes.showHikeList();
+});
+</code></pre>
+        </li>
+        <li>hike.js
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// Example of using Classes and modules to organize the code needed to render our list of hikes. Not using MVC here.
+
+//create an array of hikes
+const hikeList = [
+  {
+    name: 'Bechler Falls',
+    imgSrc: 'falls.jpg',
+    imgAlt: 'Image of Bechler Falls',
+    distance: '3 miles',
+    difficulty: 'Easy',
+    description:
+      'Beautiful short hike along the Bechler river to Bechler Falls',
+    directions:
+      'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road.Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
+  },
+  {
+    name: 'Teton Canyon',
+    imgSrc: 'falls.jpg',
+    imgAlt: 'Image of Bechler Falls',
+    distance: '3 miles',
+    difficulty: 'Easy',
+    description: 'Beautiful short (or long) hike through Teton Canyon.',
+    directions:
+      'Take Highway 33 East to Driggs. Turn left onto Teton Canyon Road. Follow that road for a few miles then turn right onto Staline Raod for a short distance, then left onto Alta Road. Veer right after Alta back onto Teton Canyon Road. There is a parking area at the trailhead.'
+  },
+  {
+    name: 'Denanda Falls',
+    imgSrc: 'falls.jpg',
+    imgAlt: 'Image of Bechler Falls',
+    distance: '7 miles',
+    difficulty: 'Moderate',
+    description:
+      'Beautiful hike through Bechler meadows river to Denanda Falls',
+    directions:
+      'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road. Drive to until you see the sign for Bechler Meadows on the left. Turn there. There is a parking area at the trailhead.'
+  }
+];
+
+const imgBasePath = '//byui-cit.github.io/cit261/examples/';
+
+export default class Hikes {
+  constructor(elementId) {
+    this.parentElement = document.getElementById(elementId);
+    // we need a back button to return back to the list. This will build it and hide it. When we need it we just need to remove the 'hidden' class
+    this.backButton = this.buildBackButton();
+  }
+  // why is this function necessary?  hikeList is not exported, and so it cannot be seen outside of this module. I added this in case I ever need the list of hikes outside of the module. This also sets me up nicely if my data were to move. I can just change this method to the new source and everything will still work if I only access the data through this getter.
+  getAllHikes() {
+    return hikeList;
+  }
+  // For the first stretch we will need to get just one hike.
+  getHikeByName(hikeName) {
+    return this.getAllHikes().find(hike => hike.name === hikeName);
+  }
+  //show a list of hikes in the parentElement
+  showHikeList() {
+    this.parentElement.innerHTML = '';
+    // notice that we use our getter above to grab the list instead of getting it directly...this makes it easier on us if our data source changes...
+    renderHikeList(this.parentElement, this.getAllHikes());
+    this.addHikeListener();
+    // make sure the back button is hidden
+    this.backButton.classList.add('hidden');
+  }
+  // show one hike with full details in the parentElement
+  showOneHike(hikeName) {
+    const hike = this.getHikeByName(hikeName);
+    this.parentElement.innerHTML = '';
+    this.parentElement.appendChild(renderOneHikeFull(hike));
+    // show the back button
+    this.backButton.classList.remove('hidden');
+  }
+  // in order to show the details of a hike ontouchend we will need to attach a listener AFTER the list of hikes has been built. The function below does that.
+  addHikeListener() {
+    // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
+    const childrenArray = Array.from(this.parentElement.children);
+    childrenArray.forEach(child => {
+      child.addEventListener('touchend', e => {
+        // why currentTarget instead of target?
+        this.showOneHike(e.currentTarget.dataset.name);
+      });
+    });
+  }
+  buildBackButton() {
+    const backButton = document.createElement('button');
+    backButton.innerHTML = '&lt;- All Hikes';
+    backButton.addEventListener('touchend', () => {
+      this.showHikeList();
+    });
+    backButton.classList.add('hidden');
+    this.parentElement.before(backButton);
+    return backButton;
+  }
+}
+// End of Hikes class
+// methods responsible for building HTML.  Why aren't these in the class?  They don't really need to be, and by moving them outside of the exported class, they cannot be called outside the module...they become private.
+function renderHikeList(parent, hikes) {
+  hikes.forEach(hike => {
+    parent.appendChild(renderOneHikeLight(hike));
+  });
+}
+function renderOneHikeLight(hike) {
+  const item = document.createElement('li');
+  item.classList.add('light');
+  // setting this to make getting the details for a specific hike easier later.
+  item.setAttribute('data-name', hike.name);
+  item.innerHTML = ` <h2>${hike.name}</h2>
+<div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
+<div>
+        <div>
+            <h3>Distance</h3>
+            <p>${hike.distance}</p>
+        </div>
+        <div>
+            <h3>Difficulty</h3>
+            <p>${hike.difficulty}</p>
+        </div>
+</div>`;
+
+  return item;
+}
+function renderOneHikeFull(hike) {
+  const item = document.createElement('li');
+  item.innerHTML = ` 
+    
+        <img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}">
+        <h2>${hike.name}</h2>
+        <div>
+            <h3>Distance</h3>
+            <p>${hike.distance}</p>
+        </div>
+        <div>
+            <h3>Difficulty</h3>
+            <p>${hike.difficulty}</p>
+        </div>
+        <div>
+            <h3>Description</h3>
+            <p>${hike.description}</p>
+        </div>
+        <div>
+            <h3>How to get there</h3>
+            <p>${hike.directions}</p>
+        </div>
+    
+    `;
+  return item;
+}
+</code></pre>
+        </li>
+      </ul>
+    </details>
+  </div>
+</main>
+<footer>
+  <p>&copy; <span id="theYear"> </span> | <a class="bold" href="../index.html">Jayser Pilapil</a> | WDD 330 Notes</p>
+</footer>
+<script src="../js/main.js"></script> 
+<script src="../js/prism.js"></script>
+</body>
+</html>
