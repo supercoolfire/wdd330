@@ -774,7 +774,7 @@ export default class Hikes {
   }
   // For the first stretch we will need to get just one hike.
   getHikeByName(hikeName) {
-    return this.getAllHikes().find(hike => hike.name === hikeName);
+    return this.getAllHikes().find(hike =&gt; hike.name === hikeName);
   }
   //show a list of hikes in the parentElement
   showHikeList() {
@@ -797,8 +797,8 @@ export default class Hikes {
   addHikeListener() {
     // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
     const childrenArray = Array.from(this.parentElement.children);
-    childrenArray.forEach(child => {
-      child.addEventListener('touchend', e => {
+    childrenArray.forEach(child =&gt; {
+      child.addEventListener('touchend', e =&gt; {
         // why currentTarget instead of target?
         this.showOneHike(e.currentTarget.dataset.name);
       });
@@ -807,7 +807,7 @@ export default class Hikes {
   buildBackButton() {
     const backButton = document.createElement('button');
     backButton.innerHTML = '&lt;- All Hikes';
-    backButton.addEventListener('touchend', () => {
+    backButton.addEventListener('touchend', () =&gt; {
       this.showHikeList();
     });
     backButton.classList.add('hidden');
@@ -818,7 +818,7 @@ export default class Hikes {
 // End of Hikes class
 // methods responsible for building HTML.  Why aren't these in the class?  They don't really need to be, and by moving them outside of the exported class, they cannot be called outside the module...they become private.
 function renderHikeList(parent, hikes) {
-  hikes.forEach(hike => {
+  hikes.forEach(hike =&gt; {
     parent.appendChild(renderOneHikeLight(hike));
   });
 }
@@ -827,18 +827,18 @@ function renderOneHikeLight(hike) {
   item.classList.add('light');
   // setting this to make getting the details for a specific hike easier later.
   item.setAttribute('data-name', hike.name);
-  item.innerHTML = ` <h2>${hike.name}</h2>
-<div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
-<div>
-        <div>
-            <h3>Distance</h3>
-            <p>${hike.distance}</p>
-        </div>
-        <div>
-            <h3>Difficulty</h3>
-            <p>${hike.difficulty}</p>
-        </div>
-</div>`;
+  item.innerHTML = ` &lt;h2&gt;${hike.name}&lt;/h2&gt;
+&lt;div class="image"&gt;&lt;img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"&gt;&lt;/div&gt;
+&lt;div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Distance&lt;/h3&gt;
+            &lt;p&gt;${hike.distance}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Difficulty&lt;/h3&gt;
+            &lt;p&gt;${hike.difficulty}&lt;/p&gt;
+        &lt;/div&gt;
+&lt;/div&gt;`;
 
   return item;
 }
@@ -846,24 +846,24 @@ function renderOneHikeFull(hike) {
   const item = document.createElement('li');
   item.innerHTML = ` 
     
-        <img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}">
-        <h2>${hike.name}</h2>
-        <div>
-            <h3>Distance</h3>
-            <p>${hike.distance}</p>
-        </div>
-        <div>
-            <h3>Difficulty</h3>
-            <p>${hike.difficulty}</p>
-        </div>
-        <div>
-            <h3>Description</h3>
-            <p>${hike.description}</p>
-        </div>
-        <div>
-            <h3>How to get there</h3>
-            <p>${hike.directions}</p>
-        </div>
+        &lt;img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"&gt;
+        &lt;h2&gt;${hike.name}&lt;/h2&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Distance&lt;/h3&gt;
+            &lt;p&gt;${hike.distance}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Difficulty&lt;/h3&gt;
+            &lt;p&gt;${hike.difficulty}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Description&lt;/h3&gt;
+            &lt;p&gt;${hike.description}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;How to get there&lt;/h3&gt;
+            &lt;p&gt;${hike.directions}&lt;/p&gt;
+        &lt;/div&gt;
     
     `;
   return item;
@@ -872,6 +872,11 @@ function renderOneHikeFull(hike) {
         </li>
       </ul>
     </details>
+  <details><summary>Question</summary>
+  <ol>
+    <li>Can we use async fucntion on Ajax?</li>
+    </ol>
+  </details>
   </div>
 </main>
 <footer>
