@@ -43,6 +43,10 @@ const main = {
         label: "Week 7 notes",
         url: "week7/index.html",
       },
+      {
+        label: "Week 8 notes",
+        url: "week8/index.html",
+      },
     ];
     
     readLinks(links);

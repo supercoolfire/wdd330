@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description"
+    content="Notes for Jayser Pilapil in WDD 330: Web Frontend Development II at Brigham Young University - Idaho">
+<meta name="author" content="Jayser Pilapil">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/prism.css">
+<link rel="stylesheet" href="../css/small.css">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<title>Week 8 Notes</title>
+</head>
+
+<body>
+<header>
+  <h1 id="rickRoll">Week 8</h1>
+  <a href="../index.html"> 🡠 Back</a> </header>
+<main>
+  <div class="accordion">
+    <details>
+      <summary>HTML5 &amp; CSS3 FOR THE REAL WORLD: 2ND EDITION</summary>
+      <details>
+        <summary>Ch8: Transforms and Transitions</summary>
+        <details><summary>Transforms</summary>
+          <ul>
+            <li>Translation
+              <ul>
+                <li><pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">translate(x,y) //position or against a parent
+                  position: relative //moves an element</code></pre>
+                  <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transform: translate(45px, -45px);</code></pre></li>
+                <li>Note: Transforms and Older Browsers
+                  <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">-webkit-transform: translate(45px,-45px); /* iOS8, Android 
+↵4.4.3, BB10 */
+-ms-transform: translate(45px,-45px); /* IE9 only */
+transform: translate(45px,-45px);</code></pre>
+                  <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">transform: translateX(45px);</code></pre>
+                  <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">transform: translateY(-30px);</code></pre>
+                  move the word “dukes” over to the right
+                  <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">&lt;h1&gt;Put your &lt;span&gt;dukes&lt;/span&gt; up, sire&lt;/h1&gt;</code></pre>
+                  <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.ad-ad2 h1:hover span {
+    color: #484848;  
+    transform: translateX(40px);
+}</code></pre>
+                  <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.ad-ad2 h1 span {
+    font-size: 30px;
+    color: #999999;
+    display: inline-block; /* This will work*/
+    …</code></pre>
+                </li>
+              </ul>
+            </li>
+            <li>Scaling
+              <ul>
+                <li><pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">Scalingtransform: scale(1.5, 0.25);</code></pre></li>
+                <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.ad-ad2 h1:hover span {
+    color: #484848;  
+    transform: translateX(40px) scale(1.5);
+}</code></pre>
+              <li>Rotation
+                <ul>
+                  <li>
+                  <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.ad-ad2 h1:hover span {
+    color: #484848;
+    transform: rotate(10deg) translateX(40px) scale(1.5);
+}</code></pre>
+                  </li>
+                </ul>
+                </li>
+                <li>Skew
+                  <ul>
+                    <li><pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transform: skew(15deg, 4deg);</code></pre></li>
+                    
+                  </ul>
+                </li>
+                <li>Changing the Origin of the Transform
+                <ul>
+                  <li><pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transform-origin: 0 0;</code></pre></li>
+                  </ul>
+                </li>
+                <li>Note: Choose Your Ordering Carefully
+                <p>The order of&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">transform</code>&nbsp;functions does matter: if you rotate before translating, your translate direction will be on the rotated axis. The rightmost square in Figure&nbsp;8.8 was translated then rotated with&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">transform: translateX(200px)&nbsp;rotate(135deg);</code>. The leftmost square was rotated first then translated along the newly rotated axis:&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">transform:&nbsp;rotate(135deg) translateX(200px);</code>.</p>
+                </li>
+                <li>Support for Internet Explorer 8 and Earlier
+                <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.translate {
+    position: relative;
+    top: 200px;
+    left: 200px;
+}</code></pre>
+                  <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.rotate {
+    transform: rotate(15deg);  
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+        sizingMethod='auto expand', M11=0.9659258262890683, 
+        M12=-0.25881904510252074, M21=0.25881904510252074, 
+        M22=0.9659258262890683); 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(
+        M11=0.9659258262890683, M12=-0.25881904510252074, 
+        M21=0.25881904510252074, M22=0.9659258262890683,
+        sizingMethod='auto expand')"; 
+    zoom: 1;
+}</code></pre>
+                  
+                </li>
+                <li>Transitions
+                <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transition-property</code></pre>
+                  <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.ad-ad2 h1 span {
+    transition-property: transform;
+}</code></pre>
+                </li>
+                <li>Note: Supporting Older Browsers
+                <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.ad-ad2 h1 span {
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+}</code></pre>
+                  <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.foo {
+    transition-property: transform, color;
+}</code></pre>
+                </li>
+                <li>The transition-duration Property
+                  <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transition-duration: 0.2s;</code></pre>
+                  
+                </li>
+                <li>Note: Automatic Graceful Degradation
+                  <p>While transitions are supported in all modern browsers, the fact that they&rsquo;re declared separately from the properties that are changing means that those changes will still be apparent in older browsers without support for transitions. Those browsers will still apply the&nbsp;<code class="prism-code language-none rounded-md p-1 break-words">:hover</code>&nbsp;(or other) state, except that the changes will happen instantly rather than transitioning over time.</p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </details>
+        <details><summary>The transition-timing-function Property</summary>
+          <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transition-timing-function: ease-out;</code></pre>
+          <ul>
+            <li>The
+            <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transition-delay</code></pre>
+            </li>
+            <li>Property
+            <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">-webkit-transition-delay: 50ms;
+transition-delay: 50ms;</code></pre></li>
+            <li>Tip: Negative Delays
+              <div class="relative" data-interactive="true">
+<p class="px-1 -mx-1" data-block="jzj69ad1">Interestingly, a negative time delay that&rsquo;s less than the duration of the entire transition will cause it to start immediately, but it will start partway through the animation. For example, if you have a delay of -500ms on a 2s transition, the transition will start a quarter of the way through, and will last 1.5 seconds. On the way back, it will jump 75% of the way through the transition, and then transition back to the default state. This might be used to create some interesting effects, so it&rsquo;s worth being aware of.</p>
+</div>
+<div class="relative" data-interactive="true">
+<div class="flex flex-col items-center absolute top-1 -ml-5 !my-0">&nbsp;</div>
+</div>
+            </li>
+            <li>The transition Shorthand Property
+            <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.ad-ad2 h1 span {
+    transition-property: transform; 
+    transition-duration: 0.2s;  
+    transition-timing-function: ease-out;
+    transition-delay: 50ms;
+}</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.ad-ad2 h1 span {
+    transition: transform 0.2s ease-out 50ms;
+}</code></pre>
+            </li>
+            <li>Multiple Transitions
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transition-property: transform, color; 
+transition-duration: 0.2s;  
+transition-timing-function: ease-out;
+transition-delay: 50ms;</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transition-property: transform, color; 
+transition-duration: 0.2s, 0.1s;  
+transition-timing-function: ease-out, linear;
+transition-delay: 50ms;</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transition: transform 0.2s ease-out 50ms, color 0.1s linear 50ms;</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">transition: all 0.2s ease-out 50ms;</code></pre>
+            </li>
+          </ul>
+        </details>
+        <details><summary>Animations</summary>
+          <ul>
+            <li>Keyframes
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">@-webkit-keyframes myAnimation { 
+    /* put animation keyframes here */
+}
+@keyframes myAnimation { 
+    /* put animation keyframes here */
+}</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">@keyframes moveRight { 
+    from {
+    transform: translateX(-50%);
+    }
+    to {
+    transform: translateX(50%);
+    }
+}
+
+@keyframes appearDisappear { 
+    0%, 100% {
+    opacity: 0;
+    }
+    20%, 80% {
+    opacity: 1;
+    }
+}
+
+@keyframes bgMove {
+    100% {
+    background-position: 120% 0;
+    }
+}</code></pre>
+            </li>
+            <li>Animation Properties
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">animation-name</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">animation-name: appearDisappear;</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">animation-duration</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">animation-duration: 300ms;</code></pre>  
+            </li>
+            <li>animation-timing-function
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">animation-timing-function: linear;</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">.ad-ad3 :after {
+    content: '';
+    width: 90px;
+    height: 92px;
+    background-image: url(../images/bike_sprite.png);
+    display: block;
+    margin: auto;
+}
+
+@keyframes bike {
+    0% {
+    background-position: 0 0;
+    }
+    100% {
+        background-position: -360px 0;
+    }
+}</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">animation-timing-function: steps(4, end);</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">animation-iteration-count: infinite;</code></pre>
+            </li>
+            <li>animation-direction
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">animation-direction: alternate;</code></pre>
+            </li>
+          </ul>
+        
+        
+        </details>
+        
+        
+        
+      </details>
+      <details>
+        <summary>Ch12: Canvas, SVG, and Drag and Drop</summary>
+        <details><summary>Canvas</summary>
+          <ul>
+            <li>Creating a canvas Element
+              <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;canvas&gt;
+    Sorry! Your browser doesn’t support Canvas.
+&lt;/canvas&gt;</code></pre>
+              <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;canvas id="myCanvas" class="myCanvas"&gt;
+    Sorry! Your browser doesn’t support Canvas.
+&lt;/canvas&gt;</code></pre>
+            </li>
+            <li>Note: Why not set width and height using CSS?
+              <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;canvas id="myCanvas" class="myCanvas" width="200" height="200"&gt;
+    Sorry! Your browser doesn’t support Canvas.
+&lt;/canvas&gt;</code></pre>
+              <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">.myCanvas {
+    border: dotted 2px black;
+}</code></pre>
+            </li>
+            <li>Drawing on the Canvas
+              <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">All drawing on the canvas happens via the Canvas JavaScript API. In this chapter, we’ll walk you through several different things you can draw onto the canvas element. Each example will have a new function, and all of these different functions live in a file called canvas.js.</code></pre>              
+            </li>
+            <li>Note: A Canvas Playground
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">var canvas = document.getElementById("myCanvas");</code></pre>
+            </li>
+            <li>Getting the Context
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">var canvas = document.getElementById("myCanvas");
+var context = canvas.getContext("2d");</code></pre>
+            </li>
+            <li>Note: What about 3D?
+            <div class="relative" data-interactive="true">
+<p class="px-1 -mx-1" data-block="jzj69ayo">WebGL is a new API for 3D graphics being managed by the Khronos Group, with a WebGL working group that includes Apple, Mozilla, Google, and Opera.</p>
+</div>
+<div class="relative" data-interactive="true">
+<div class="flex flex-col items-center absolute top-1 -ml-5 !my-0">&nbsp;</div>
+<p class="px-1 -mx-1" data-block="jzj69ayp">By combining WebGL with HTML5 Canvas, you can draw in three dimensions. WebGL is currently fully supported in Chrome 18+, Internet Explorer 11+, and iOS 8+, and partially supported in Firefox 4+, Safari 5.1, Opera 12+, and Chrome 37+ for Android. To learn more, see&nbsp;<a class="" href="http://www.khronos.org/webgl/" target="_blank">http://www.khronos.org/webgl/</a>.</p>
+</div>
+            </li>
+            <li>Filling Our Brush with Color
+            <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">var canvas = document.getElementById("myCanvas");     
+var context = canvas.getContext("2d");
+context.strokeStyle = "red";</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">var canvas = document.getElementById("myCanvas");     
+var context = canvas.getContext("2d");
+context.strokeStyle = "red";
+context.fillStyle = "blue";</code></pre>
+              <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">var canvas = document.getElementById("myCanvas");     
+var context = canvas.getContext("2d");
+context.strokeStyle = "red";
+context.fillStyle = "rgba(0, 0, 255, 0.5)";</code></pre>
+            </li>
+          </ul>
+        
+        
+        
+        </details>
+        
+        
+        
+        
+      </details>
+    </details>
+      <details>
+        <summary>Team Activity</summary>
+        Starwars
+        <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="description"
+        content="Starwars API, Week 8 Team activity in WDD 330: Web Frontend Development II at Brigham Young University - Idaho"&gt;
+    &lt;meta name="author" content="Jayser Pilapil"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+
+    &lt;link rel="stylesheet" href="../../css/prism.css"&gt;
+    &lt;link rel="stylesheet" href="../../css/small.css"&gt;
+    &lt;link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"&gt;
+
+    &lt;title&gt;Week 8 Team activity&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1 id="rickRoll"&gt;Week 8 Team activity&lt;/h1&gt;
+        &lt;a href="../../index.html"&gt; 🡠 Back&lt;/a&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;div id="star"&gt;&lt;/div&gt;
+
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&copy; &lt;span id="theYear"&gt; &lt;/span&gt; | &lt;a class="bold" href="../../index.html"&gt;Jayser Pilapil&lt;/a&gt; | WDD 330
+            Notes
+        &lt;/p&gt;
+    &lt;/footer&gt;
+    &lt;!-- &lt;script src="./js/new.js"&gt;&lt;/script&gt; --&gt;
+    &lt;script src="./js/index.js" type="module"&gt;&lt;/script&gt;
+    &lt;script src="../../js/main.js"&gt;&lt;/script&gt;
+    &lt;script src="../../js/prism.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        index.js
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">import App from './starwars.js'; // This module uses async/await
+
+const url = 'https://swapi.dev/api/people'
+const schema = 'https://swapi.dev/api/people/schema'
+
+
+const starwars = new App('star', url);
+window.addEventListener('load', () =&gt; {
+    starwars.main();
+    // console.log(starwars.getPeople())
+});</code></pre>
+        starwars.js
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">function createTag(parent, name, id="", clas="", href="", src="",
+alt="", innerHTML="", innerText="", content="",textContent="",value="") {
+  const template = document.createElement(template);
+  const tag = document.createElement(name);
+  if (clas) {
+    tag.setAttribute("class", clas);
+  }
+  if (id) {
+    tag.setAttribute("id", id);
+  }
+  if (href) {
+    tag.setAttribute("href", href)
+  }
+  if (src) {
+    tag.setAttribute("src", src)
+  }
+  if (alt) {
+    tag.setAttribute("alt", alt)
+  }
+  if (name == "img") {
+    tag.setAttribute("src", src);
+    tag.setAttribute("alt", alt);
+    tag.setAttribute("loading", "lazy");
+  }
+  if (innerHTML){
+    tag.innerHTML = innerHTML;
+  }
+  if (innerText){
+    tag.innerText = innerText;
+  }
+  if (content){
+    tag.content = content;
+  }
+  if (textContent){
+    tag.textContent = textContent;
+  }
+  if (value){
+    tag.value = value;
+  }
+  
+  parent.content.appendChild(template);
+  return template
+}
+parent = document.getElementById("star");
+uleMate = createTag(parent,"div",clas="mate", innerHTML ="tae");
+
+function lementFromHtml(html) {
+  const template = document.createElement("template");
+
+  template.innerHTML = html.trim();
+
+  return template.content.firstElementChild;
+}
+
+// cample
+const sample = ElementFromHtml(`
+  &lt;ul&gt;
+    &lt;li&gt;taw&lt;/li&gt;
+  &lt;/li&gt;
+`);
+sample
+
+export default class App {
+  constructor(elementId, url) {
+    this.parentElement = document.getElementById(elementId);
+    this.backButton = this.buildBackButton();
+    this.url = url;
+    
+    this.count = 0
+    this.next = ""
+    this.previous = ""
+    this.data = []
+    console.log(this.url);
+
+  }
+  buildBackButton() {
+    const backButton = document.createElement('button');
+    backButton.innerHTML = '&lt;- All Hikes';
+    backButton.addEventListener('touchend', () =&gt; {
+      this.showPeople();
+    });
+    backButton.classList.add('hidden');
+    this.parentElement.before(backButton);
+    return backButton;
+  }
+
+  main() {
+    this.fetchHuman();
+  }
+  fetchHuman() {
+    async function getPeople(URL) {
+      let response = await fetch(URL);
+      if (response.ok) {
+        let data = await response.json();
+        App.count = data.count
+        App.next = data.next
+        App.previous = data.previous
+        // App.data = data.results.text()
+        iterateResults(data.results)
+      } else {
+        throw Error(response.statusText)
+      }
+    }
+    getPeople(this.url);
+
+    function iterateResults(data) {
+      console.log('data: ', data);
+      data.forEach(person =&gt; {
+        // console.log(person.films);
+
+        document.getElementById('star').innerHTML += `&lt;ul&gt;
+        &lt;li&gt;Name: ${person.name}&lt;/li&gt;
+        &lt;li&gt;height: ${person.height}&lt;/li&gt;
+        &lt;li&gt;mass: ${person.mass}&lt;/li&gt;
+        &lt;li&gt;hair_color: ${person.hair_color}&lt;/li&gt;
+        &lt;li&gt;skin_color: ${person.skin_color}&lt;/li&gt;
+        &lt;li&gt;eye_color: ${person.eye_color}&lt;/li&gt;
+        &lt;li&gt;birth_year: ${person.birth_year}&lt;/li&gt;
+        &lt;li&gt;gender: ${person.gender}&lt;/li&gt;
+        &lt;li&gt;films: &lt;ul&gt;${
+          person.films.forEach(film =&gt; {
+            return `&lt;li&gt;${film}&lt;/li&gt;`
+          })
+        }&lt;/ul&gt;&lt;/li&gt;
+        &lt;ul&gt;`
+      }); 
+    }
+
+  }
+  getPeople() {
+    // return this.data
+  }
+
+  showPeople() {
+    this.parentElement.innerHTML = '';
+    renderPeople(this.parentElement, this.getAllPerson());
+    this.addPeopleListener();
+    this.backButton.classList.add('hidden');
+  }
+  addPeopleListener() {
+    const childrenArray = Array.from(this.parentElement.children);
+    childrenArray.forEach(child =&gt; {
+      child.addEventListener('touchend', e =&gt; {
+        // why currentTarget instead of target?
+        this.showPerson(e.currentTarget.dataset.name);
+      });
+    });
+  }
+  showOneHike(personName) {
+    const hike = this.getHikeByName(personName);
+    this.parentElement.innerHTML = '';
+    this.parentElement.appendChild(renderOneHikeFull(hike));
+    // show the back button
+    this.backButton.classList.remove('hidden');
+  }
+
+}
+
+function renderPeople(parentElement, person){
+
+}
+</code></pre>
+      </details>
+    
+    <details><summary>Question</summary>
+    <ol>
+      <li>.forEach inside .innerHTML that inside the parent .forEach doesn't work for me. How can I make it work?</li>
+    <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">    function iterateResults(data) {
+      console.log('data: ', data);
+      data.forEach(person =&gt; {
+        // console.log(person.films);
+
+        document.getElementById('star').innerHTML += `&lt;ul&gt;
+        &lt;li&gt;Name: ${person.name}&lt;/li&gt;
+        &lt;li&gt;height: ${person.height}&lt;/li&gt;
+        &lt;li&gt;mass: ${person.mass}&lt;/li&gt;
+        &lt;li&gt;hair_color: ${person.hair_color}&lt;/li&gt;
+        &lt;li&gt;skin_color: ${person.skin_color}&lt;/li&gt;
+        &lt;li&gt;eye_color: ${person.eye_color}&lt;/li&gt;
+        &lt;li&gt;birth_year: ${person.birth_year}&lt;/li&gt;
+        &lt;li&gt;gender: ${person.gender}&lt;/li&gt;
+        &lt;li&gt;films: &lt;ul&gt;${
+          person.films.forEach(film =&gt; {
+            return `&lt;li&gt;${film}&lt;/li&gt;`
+          })
+        }&lt;/ul&gt;&lt;/li&gt;
+        &lt;ul&gt;`
+      }); 
+    }</code></pre>
+      </ol>
+    </details>
+    <details><summary>Exploring Google App Script</summary>
+      
+    <p>I have a table of colors and shades' names in the spreadsheet. The objective of this app is to test a sentence to see if it contains a color name or its shade name; if it does, it will return all the color names.</p>
+<p>string: Trailing Away Cream, Island Blooms Seamist<br />return: Aqua,Beige</p>
+<p>function: colors(text, range)</p>
+      <p>I'm still on the first step&nbsp;</p>
+      <div class="relative" data-interactive="true">
+<table dir="ltr" border="1" cellspacing="0" cellpadding="0"><colgroup><col width="85" /><col width="100" /><col width="101" /><col width="100" /><col width="111" /><col width="100" /></colgroup>
+<tbody>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Aqua&quot;}">Aqua</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Not Aqua&quot;}">Not Aqua</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Beige&quot;}">Beige</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Black&quot;}">Black</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Blue&quot;}">Blue</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Not Blue&quot;}">Not Blue</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~ aqua~&quot;}">~ aqua~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~sea port~&quot;}">~sea port~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~alabaster~&quot;}">~alabaster~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~anthracite ~&quot;}">~anthracite ~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~admiral~&quot;}">~admiral~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~blue spruce~&quot;}">~blue spruce~</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~aqua~&quot;}">~aqua~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~beige~&quot;}">~beige~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~black ~&quot;}">~black ~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~adriatic~&quot;}">~adriatic~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~metal blue~&quot;}">~metal blue~</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~oyster~&quot;}">~oyster~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~bone~&quot;}">~bone~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~carbon~&quot;}">~carbon~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~aegean~&quot;}">~aegean~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~reef~&quot;}">~reef~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~brass~&quot;}">~brass~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~caviar ~&quot;}">~caviar ~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~aero~&quot;}">~aero~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~sea~&quot;}">~sea~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~buckskin~&quot;}">~buckskin~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~iron~&quot;}">~iron~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~arctic~&quot;}">~arctic~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~seabreeze~&quot;}">~seabreeze~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~celadon~&quot;}">~celadon~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~jet~&quot;}">~jet~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~azul~&quot;}">~azul~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~seaglass~&quot;}">~seaglass~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~camel~&quot;}">~camel~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~mercury~&quot;}">~mercury~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~azure~&quot;}">~azure~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~seaspray~&quot;}">~seaspray~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~chamois~&quot;}">~chamois~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~onyx~&quot;}">~onyx~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~berry~&quot;}">~berry~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~storm~&quot;}">~storm~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~champagne~&quot;}">~champagne~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~pitch~&quot;}">~pitch~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~bleu de france~&quot;}">~bleu de france~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~teal~&quot;}">~teal~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~chino~&quot;}">~chino~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~tuxedo~&quot;}">~tuxedo~</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~blue~&quot;}">~blue~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~turquoise~&quot;}">~turquoise~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~cinnamon~&quot;}">~cinnamon~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~caribe~&quot;}">~caribe~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~bamboo~&quot;}">~bamboo~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~cream~&quot;}">~cream~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~cerulean~&quot;}">~cerulean~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~froth~&quot;}">~froth~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~driftwood~&quot;}">~driftwood~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~chambray~&quot;}">~chambray~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~beach~&quot;}">~beach~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~ecru~&quot;}">~ecru~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~cobalt~&quot;}">~cobalt~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~eggshell~&quot;}">~eggshell~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~deep sea~&quot;}">~deep sea~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~fawn~&quot;}">~fawn~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~denim~&quot;}">~denim~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~flax~&quot;}">~flax~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~dresden~&quot;}">~dresden~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~fossil~&quot;}">~fossil~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~electric indigo~&quot;}">~electric indigo~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~french vanilla~&quot;}">~french vanilla~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~glaucous~&quot;}">~glaucous~</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~greige~&quot;}">~greige~</td>
+<td>&nbsp;</td>
+<td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;~horizon~&quot;}">~horizon~</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+    <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">/**
+ * Find word in a sentence that matches the range.
+ *
+ * 
+ *
+ * @param {text} input the source text to test.
+ * @param {colors} input the range of color, first line is the heading.
+ * @param {styleName} Style name for one column with no heading
+ * @return {text} all the keyword in color family.
+ * @customfunction
+ */
+function colors(text, colors, styleName) {
+  let words = text.split(" ")
+  matchedColor = []
+  t = ""
+
+  // make table
+  objectCleanRow(colors)
+  let values = objectGetKeyValues(colors)
+  // get first row
+  let firtsRow = objectGetFirstRow(colors)
+  // get first row lenght
+  let fristRowLen = objectGetFirstLlength(colors)
+  // get index of firstrow colomns
+  // firtsRow.forEach((column) =&gt; {
+  //   t += column
+  // });
+  let cleandObject = removeEmpty(colors)
+  colors.forEach((row) =&gt; {
+    // t += row[0][0]
+  });
+  return t
+}
+
+
+// objects
+function removeEmpty(obj){
+    return Object.fromEntries(
+      Object.entries(obj)
+        .filter(([_, v]) =&gt; v != null)
+        .map(([k, v]) =&gt; [k, v === Object(v) ? this.removeEmpty(v) : v])
+    );
+  }
+
+function objectGetKeyIndex(obj, key) {
+  return Object.keys(obj).findIndex((elt) =&gt; elt === key);
+}
+
+function objectGetProperty(obj) {
+  t = ''
+  for (property in obj) {
+    t += `${obj.property}\n`;
+  };
+  return t
+}
+
+function objectGetKeyLen(obj) {
+  /*
+  * return string
+  */
+  let objLength = Object.keys(obj).length
+  return objLength
+}
+
+function objectGetKeyValues(obj) {
+  /*
+  * return string or array
+  */
+  a = []
+  t = ""
+  Object.entries(obj).forEach(
+    ([key, value]) =&gt; {
+      if (value) {
+        t += `${key}: ${value}\n`;
+        a.push(value)
+      }
+    }
+
+  );
+  return a
+}
+
+function objectGetFirstRow(obj, row=0, column=0) {
+  /*
+  * return string or array
+  */
+  a = obj[Object.keys(obj)[row]][column]// array
+  // t = obj[Object.keys(obj)[row]][column].join(" ").toString(); // string
+  return a
+}
+function getColumn(obj, index) {
+  return obj[Object.keys(obj)[0]][index];
+}
+function objectGetFirstLlength(obj) {
+  /*
+  * return string
+  */
+  let objLength = Object.keys(obj).length
+  return objLength
+}
+function objectCleanRow(obj) {
+  Object.keys(obj).forEach((k) =&gt; (obj[k] === null || obj[k] === undefined) && delete obj[k]);
+}
+
+// arrays
+function arrayRemoveEmptyElement(array) {
+  /*
+  * return array
+  */
+  var filtered = array.filter(function (el) {
+    return el != null;
+  });
+  return filtered
+}
+
+function getValueLen(arr) {
+  /*
+  * return string
+  */
+  t = ""
+  t = arr.length
+  return t
+}
+
+</code></pre>
+    </details>
+    
+    
+  </div>
+</main>
+<footer>
+  <p>&copy; <span id="theYear"> </span> | <a class="bold" href="../index.html">Jayser Pilapil</a> | WDD 330 Notes</p>
+</footer>
+<script src="../js/main.js"></script> 
+<script src="../js/prism.js"></script>
+</body>
+</html>
