@@ -9,8 +9,32 @@ body {
     font-weight: bold;
   }
 
+a {
+    text-decoration: none;
+}
+.weak {
+    display: block;
+    padding: .2rem;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.weak:hover {
+    background-color: #0b02f9;
+    color: white;
+}
+h1 {
+    transition: 0.5s;
+    text-align: center;
+}
 h1:hover {
     cursor: pointer;
+    position: relative;
+    transform: translateY(5px);
+    background-color: #0a02f956;
+}
+h2 {
+    text-align: center;
+
 }
 .li-code {
     list-style-type: none;
@@ -30,3 +54,18 @@ summary {
     padding: 1rem;
     cursor: pointer;
 }
+body ol li {
+    padding: .5rem;
+}
+.references {
+    padding-left: 1rem;
+}
+ol {
+    list-style-type: none;
+}
+.references ol li {
+    padding-top: .5rem;
+}
+/* * {
+    outline: 1px dashed red;
+} */
