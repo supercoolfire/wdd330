@@ -31,8 +31,24 @@ const main = {
           ],
         sites: [
           {
-            title: "",
-            url: "",
+            title: "How To Use ES6 Arguments And Parameters",
+            url: "https://www.smashingmagazine.com/2016/07/how-to-use-arguments-and-parameters-in-ecmascript-6/",
+          },
+          {
+            title: "JavaScript functions - Exercises, Practice, Solution",
+            url: "https://www.w3resource.com/javascript-exercises/javascript-functions-exercises.php",
+          },
+          {
+            title: "Doing Stuff with Web Things",
+            url: "Doing Stuff with Web Things",
+          },
+          {
+            title: "on creating a portfolio",
+            url: "on creating a portfolio",
+          },
+          {
+            title: "Master Mobile UX",
+            url: "Master Mobile UX",
           },
         ]
         },
@@ -176,7 +192,7 @@ const main = {
         description: "",
       },
       {
-        label: "Week 6 To Do App",
+        label: "Week 6 notes",
         url: "todo/index.html",
         reference: {
           books: [
@@ -192,8 +208,8 @@ const main = {
           ],
         sites: [
           {
-            title: "",
-            url: "",
+            title: "To Do App",
+            url: "todo/index.html",
           },
         ]
         },
@@ -385,7 +401,6 @@ const main = {
       
       
       links.forEach(e => {
-        if (e.reference.books[0].title != "" || e.reference.sites[0].title != "") {
           
 
 
@@ -401,39 +416,43 @@ const main = {
         let div = document.createElement('div');
         div.className = "references";
         li.appendChild(div);
-        
-        if (e.reference.books[0].title != "") {
           
-          let p = document.createElement('p');
-          p.textContent = "References:";
-          div.appendChild(p);
+        let p = document.createElement('p');
+        p.textContent = "References:";
+        div.appendChild(p);
 
-          let ol = document.createElement('ol');
-          div.appendChild(ol);
+        let ol = document.createElement('ol');
+        div.appendChild(ol);
+        
+        if (e.reference.books[0].title != "" || e.reference.sites[0].title != "") {
 
-          e.reference.books.forEach(book => {
-            let li = document.createElement('li');
-            li.innerHTML = `Book: ${book.title}`;
-            ol.appendChild(li)
+          
+          if (e.reference.books[0].title != "") {
 
-            if (book.chapters[0].chapter != "") {
-              let ol = document.createElement('ol');
-              li.appendChild(ol);
-              book.chapters.forEach(chapter => {
-                let li = document.createElement('li');
-                ol.appendChild(li);
+            e.reference.books.forEach(book => {
+              let li = document.createElement('li');
+              li.innerHTML = `Book: ${book.title}`;
+              ol.appendChild(li)
 
-                let a = document.createElement('a');
-                a.textContent = `${chapter.chapter}`;
-                a.href = chapter.url;
-                a.target = '_blank';
-                li.appendChild(a);
+              if (book.chapters[0].chapter != "") {
+                let ol = document.createElement('ol');
+                li.appendChild(ol);
+                book.chapters.forEach(chapter => {
+                  let li = document.createElement('li');
+                  ol.appendChild(li);
 
-              });
-            }
-          });
+                  let a = document.createElement('a');
+                  a.textContent = `${chapter.chapter}`;
+                  a.href = chapter.url;
+                  a.target = '_blank';
+                  li.appendChild(a);
 
-          if (e.reference.sites[0].title != "") {
+                });
+              }
+            });
+          }
+
+          if (e.reference.sites[0].title != "") { 
             e.reference.sites.forEach(site => {
               let li = document.createElement('li');
               li.innerHTML = "Site: ";
@@ -444,11 +463,10 @@ const main = {
               a.target = '_blank';
               li.appendChild(a)
             });
-          }
-        }
-    
+          }           
+      
 
-        parent.appendChild(li);
+          parent.appendChild(li);
     
       }
       });

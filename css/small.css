@@ -13,6 +13,7 @@ a {
     text-decoration: none;
 }
 .weak {
+    background-color: #0a02f90e;
     display: block;
     padding: .5rem;
     font-weight: bold;
