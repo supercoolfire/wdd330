@@ -1,4 +1,4 @@
-body {
+body, footer {
     /* max-width: 800px; */
     margin: 0 100px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -14,13 +14,15 @@ a {
 }
 .weak {
     display: block;
-    padding: .2rem;
+    padding: .5rem;
     font-weight: bold;
-    transition: 0.5s;
+    transition: 0.7s;
+    text-align: center;
 }
 .weak:hover {
-    background-color: #0b02f9;
+    background-color: #0a02f9cb;
     color: white;
+    border-radius: 1rem;
 }
 h1 {
     transition: 0.5s;
@@ -54,11 +56,19 @@ summary {
     padding: 1rem;
     cursor: pointer;
 }
-body ol li {
+ol#oList {
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 600px;
+    background-color: rgb(238, 231, 222);
+}
+main ol li {
     padding: .5rem;
 }
+
+
 .references {
-    padding-left: 1rem;
+    padding-left: 30px;
 }
 ol {
     list-style-type: none;
