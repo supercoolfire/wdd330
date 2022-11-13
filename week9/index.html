@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description"
+    content="Notes for Jayser Pilapil in WDD 330: Web Frontend Development II at Brigham Young University - Idaho">
+<meta name="author" content="Jayser Pilapil">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/prism.css">
+<link rel="stylesheet" href="../css/small.css">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<title>Week 9 Notes</title>
+</head>
+
+<body>
+<header>
+  <h1 id="rickRoll">Week 9</h1>
+  <a href="../index.html"> 🡠 Back</a> </header>
+<main>
+  <div class="accordion">
+    <details>
+      <summary>JAVASCRIPT: NOVICE TO NINJA, 2ND EDITION</summary>
+      <details>
+        <summary>The Window Object</summary>
+        <ul>
+        <li>The Browser Object Model
+          <ul>
+          <li>The BOM Only Makes Sense in a Browser Environment
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// from within the global scope
+const global = this;</code></pre>
+            </li>
+          <li>Going Global
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">x = 6;  // global variable created
+&lt;&lt; 6
+
+window.x // same variable can be accessed as a property of the window object
+&lt;&lt; 6
+
+// both variables are exactly the same
+window.x === x;
+&lt;&lt; true</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">if (x) { //ReferenceError if x has not been defined
+// do something
+}</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">if (window.x) { // if the variable is accessed as a property of the window object, then the code will still work
+// do something
+}</code></pre>
+            <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">window.parseInt(4.2); //parseInt() and isNaN(), are actually methods of the global object
+&lt;&lt; 4
+
+window.isNaN(4.2);
+&lt;&lt; false</code></pre>
+            </li>
+          <li>Changes in ES6</li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          </ul>
+          </li>
+        <li>Browser Information</li>
+        <li>The Browser History</li>
+        <li>Controlling Windows</li>
+        <li>Screen Information</li>
+        <li>The Document Object</li>
+        <li>Timing Functions</li>
+        <li>setInterval()</li>
+        <li>Animation</li>
+        </ul>
+      </details>
+      <details>
+        <summary>HTML5 APIs</summary>
+        <ul>
+        <li>The data- Attribute</li>
+        <li>HTML5 APIs</li>
+        <li>HTML5 Web Storage</li>
+        <li>Other APIs</li>
+        <li>Drawing with Canvas</li>
+        <li>Shims and Polyfills</li>
+        </ul>
+      </details>
+    </details>
+    <details>
+      <summary>Modern workflow</summary>
+      <h3>Managing the modern Front-end workflow</h3>
+      <ol>
+        <li>Lint CSS and Javascript to find any coding issues.</li>
+        <li>Run unit tests to make sure nothing got broken with your last changes</li>
+        <li>compile all SCSS/LESS to CSS</li>
+        <li>concatinate all CSS into one file for faster loading,</li>
+        <li>Minify the CSS to reduce file size.</li>
+        <li>Transpile Javascript with Babel for wider support for older browsers</li>
+        <li>Concatinate all JS files into one file for faster loading</li>
+        <li>Minify and Uglify Javascript to reduce size</li>
+        <li>Do the same for any 3rd party CSS or JS</li>
+        <li>Move all the production assets into a distribution directory to separate them from the development stuff</li>
+      </ol>
+      <ol>
+        <li><strong>Package managers</strong>: These <span style="background-color: #ffff00;">keep track of all of the external dependencies</span> for our app. Both development tools and libraries we might be using. It knows not only which packages to download...but tracks versions as well. We are using&nbsp;<code>npm</code>&nbsp;for our package manager.</li>
+        <li><strong>Bundlers: bundlers</strong> handle the <span style="background-color: #ffff00;">compiling</span>, <span style="background-color: #ffff00;">transpiling</span>, <span style="background-color: #ffff00;">concatinating</span>, <span style="background-color: #ffff00;">minifying</span>, and <span style="background-color: #ffff00;">moving around of assets</span> in our project. We are using&nbsp;<code>Parcel</code>&nbsp;as our bundler. Another common bundler is Webpack</li>
+        <li><strong>Task managers</strong>: these <span style="background-color: #ffff00;">keep track of what needs to be done</span> and <span style="background-color: #ffff00;">when</span>. There will generally be scripts defined in the task manager for each phase of development. Our project is fairly simple so we are just using&nbsp;<code>npm</code>&nbsp;again for task manager. Other common managers are Grunt or Gulp</li>
+      </ol>
+    </details>
+    <details>
+      <summary>Team Activity</summary>
+      index-START.html
+      <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;JS Drum Kit&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+    &lt;div class="keys"&gt;
+        &lt;div data-key="65" class="key"&gt;
+            &lt;kbd&gt;A&lt;/kbd&gt;
+            &lt;span class="sound"&gt;clap&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key="83" class="key"&gt;
+            &lt;kbd&gt;S&lt;/kbd&gt;
+            &lt;span class="sound"&gt;hihat&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key="68" class="key"&gt;
+            &lt;kbd&gt;D&lt;/kbd&gt;
+            &lt;span class="sound"&gt;kick&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key="70" class="key"&gt;
+            &lt;kbd&gt;F&lt;/kbd&gt;
+            &lt;span class="sound"&gt;openhat&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key="71" class="key"&gt;
+            &lt;kbd&gt;G&lt;/kbd&gt;
+            &lt;span class="sound"&gt;boom&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key="72" class="key"&gt;
+            &lt;kbd&gt;H&lt;/kbd&gt;
+            &lt;span class="sound"&gt;ride&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key="74" class="key"&gt;
+            &lt;kbd&gt;J&lt;/kbd&gt;
+            &lt;span class="sound"&gt;snare&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key="75" class="key"&gt;
+            &lt;kbd&gt;K&lt;/kbd&gt;
+            &lt;span class="sound"&gt;tom&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key="76" class="key"&gt;
+            &lt;kbd&gt;L&lt;/kbd&gt;
+            &lt;span class="sound"&gt;tink&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;audio data-key="65" src="sounds/clap.wav"&gt;&lt;/audio&gt;
+    &lt;audio data-key="83" src="sounds/hihat.wav"&gt;&lt;/audio&gt;
+    &lt;audio data-key="68" src="sounds/kick.wav"&gt;&lt;/audio&gt;
+    &lt;audio data-key="70" src="sounds/openhat.wav"&gt;&lt;/audio&gt;
+    &lt;audio data-key="71" src="sounds/boom.wav"&gt;&lt;/audio&gt;
+    &lt;audio data-key="72" src="sounds/ride.wav"&gt;&lt;/audio&gt;
+    &lt;audio data-key="74" src="sounds/snare.wav"&gt;&lt;/audio&gt;
+    &lt;audio data-key="75" src="sounds/tom.wav"&gt;&lt;/audio&gt;
+    &lt;audio data-key="76" src="sounds/tink.wav"&gt;&lt;/audio&gt;
+
+    &lt;script&gt;
+        //keys.addEventListener("keydown", )
+        window.addEventListener("keydown", playSound)
+        window.addEventListener("keyup", removePlaying)
+
+        // moved it here so the value will put here
+        let count = []
+
+        function playSound(e) {
+            console.log(e.keyCode)
+            const sound = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+
+            // this will avoid Uncaught TypeError: Cannot set properties of null (setting 'currentTime') at playSound
+            if (!sound) return;
+
+            sound.currentTime = 0;
+            sound.play();
+            let key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+            console.log(eventExists(count, e.keyCode))
+            // check if key is already pressed
+            if (!eventExists(count, e.keyCode)) {
+                key.classList.add('playing');
+                console.log("new key")
+                // object is the best way to keep the code small
+                count.push({
+                    keyed: e.keyCode,
+                    count: 1
+                });
+            } else {
+                // get indexl of keyCode
+                index = count.findIndex(item =&gt; item.keyed === e.keyCode)
+                if (count[index].count == 9) {
+                    count[index].count = 1
+                    key.classList.remove('playing');
+                } else {
+                    count[index].count = count[index].count + 1;
+                    key.classList.add('playing');
+                }
+                console.log("already pressed");
+            }
+            console.log(count);
+
+
+
+        }
+
+        function removePlaying(e) {
+            let key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+
+
+        }
+
+        // will return true if key is already pressed
+        function eventExists(arr, keyed) {
+            return arr.some(function (el) {
+                return el.keyed === keyed;
+            });
+        }
+    &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+      style.css
+      <pre class="line-numbers"><code class="language-CSS"  data-prismjs-copy="Copy to clipboard">html {
+    font-size: 10px;
+    background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+    background-size: cover;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.keys {
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.key {
+    border: .4rem solid black;
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    transition: all .07s ease;
+    width: 10rem;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+    transform: translateY(10px);
+}
+
+kbd {
+    display: block;
+    font-size: 4rem;
+}
+
+.sound {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    color: #ffc600;
+}</code></pre>
+    </details>
+  </div>
+</main>
+<footer>
+  <p>&copy; <span id="theYear"> </span> | <a class="bold" href="../index.html">Jayser Pilapil</a> | WDD 330 Notes</p>
+</footer>
+<script src="../js/main.js"></script> 
+<script src="../js/prism.js"></script>
+</body>
+</html>
