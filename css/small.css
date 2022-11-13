@@ -1,7 +1,11 @@
+html {
+    background-color: rgb(238, 231, 222);
+}
 body, footer {
     /* max-width: 800px; */
     margin: 0 100px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: .9rem;
 }
 
 .bold {
@@ -11,6 +15,7 @@ body, footer {
 
 a {
     text-decoration: none;
+    color: black;
 }
 .weak {
     background-color: #0a02f90e;
@@ -19,10 +24,21 @@ a {
     font-weight: bold;
     transition: 0.7s;
     text-align: center;
+    /* transform: translateX(-100px); */
+}
+.weak::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* padding: 1rem; */
+    background-color: red;
+    /* transform: skew(-22deg, 0deg); */
+    z-index: -1;
 }
 .weak:hover {
-    background-color: #0a02f9cb;
     color: white;
+    background-color: #0a02f9cb;
     border-radius: 1rem;
 }
 h1 {
@@ -61,10 +77,12 @@ ol#oList {
     padding: 1rem;
     margin: 0 auto;
     max-width: 600px;
-    background-color: rgb(238, 231, 222);
+    background: #eee7de;
+    box-shadow:  20px 20px 40px #cac4bd,
+                 -20px -20px 40px #ffffff;
 }
 main ol li {
-    padding: .5rem;
+    padding: .2rem;
 }
 
 
@@ -75,7 +93,7 @@ ol {
     list-style-type: none;
 }
 .references ol li {
-    padding-top: .5rem;
+    padding-top: .2rem;
 }
 /* * {
     outline: 1px dashed red;

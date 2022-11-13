@@ -40,15 +40,15 @@ const main = {
           },
           {
             title: "Doing Stuff with Web Things",
-            url: "Doing Stuff with Web Things",
+            url: "https://github.com/yenrab/doing_stuff_with_web_things",
           },
           {
             title: "on creating a portfolio",
-            url: "on creating a portfolio",
+            url: "https://byui-cit.github.io/cit261/resources/portfolio.html",
           },
           {
             title: "Master Mobile UX",
-            url: "Master Mobile UX",
+            url: "https://www.sitepoint.com/premium/courses/master-mobile-ux-2952",
           },
         ]
         },
@@ -68,11 +68,11 @@ const main = {
                 },
                 {
                   chapter: "Ch3: Arrays, Logic, and Loops",
-                  url: "Ch3: Arrays, Logic, and Loops",
+                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/3",
                 },
                 {
                   chapter: "Ch4: Functions",
-                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read",
+                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/4",
                 },
               ]
             },
@@ -85,7 +85,7 @@ const main = {
                 },
                 {
                   chapter: "Ch4: Data Structures: Objects and Arrays",
-                  url: "Data Structures: Objects and Arrays",
+                  url: "https://eloquentjavascript.net/04_data.html",
                 },
               ]
             },
@@ -145,15 +145,15 @@ const main = {
               chapters: [
                 {
                   chapter: "Ch8: Forms",
-                  url: "Ch8: Forms",
+                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/8",
                 },
                 {
                   chapter: "Ch12: Object Oriented Programming",
-                  url: "",
+                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/12",
                 },
                 {
                   chapter: "Ch15: Modern Javascript",
-                  url: "Ch15: Modern Javascript",
+                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/15",
                 },
               ]
             },
@@ -177,7 +177,7 @@ const main = {
               chapters: [
                 {
                   chapter: "Ch10: Testing and Debugging",
-                  url: "Ch10: Testing and Debugging",
+                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/10",
                 },
               ]
             },
@@ -192,7 +192,7 @@ const main = {
         description: "",
       },
       {
-        label: "Week 6 notes",
+        label: "Week 6 challenge",
         url: "todo/index.html",
         reference: {
           books: [
@@ -225,11 +225,11 @@ const main = {
               chapters: [
                 {
                   chapter: "Ch11: Further Functions",
-                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read",
+                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/11",
                 },
                 {
                   chapter: "Ch13: AJAX",
-                  url: "Ch13: AJAX",
+                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/13",
                 },
               ]
             },
@@ -257,7 +257,7 @@ const main = {
                 },
                 {
                   chapter: "Ch12: Canvas, SVG, and Drag and Drop",
-                  url: "Ch12: Canvas, SVG, and Drag and Drop",
+                  url: "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/12/",
                 },
               ]
             },
@@ -401,9 +401,6 @@ const main = {
       
       
       links.forEach(e => {
-          
-
-
         let a = document.createElement('a');
         a.innerHTML = e.label;
         a.href = e.url;
@@ -426,9 +423,7 @@ const main = {
         
         if (e.reference.books[0].title != "" || e.reference.sites[0].title != "") {
 
-          
           if (e.reference.books[0].title != "") {
-
             e.reference.books.forEach(book => {
               let li = document.createElement('li');
               li.innerHTML = `Book: ${book.title}`;
@@ -437,6 +432,7 @@ const main = {
               if (book.chapters[0].chapter != "") {
                 let ol = document.createElement('ol');
                 li.appendChild(ol);
+
                 book.chapters.forEach(chapter => {
                   let li = document.createElement('li');
                   ol.appendChild(li);
@@ -446,7 +442,6 @@ const main = {
                   a.href = chapter.url;
                   a.target = '_blank';
                   li.appendChild(a);
-
                 });
               }
             });
@@ -457,6 +452,7 @@ const main = {
               let li = document.createElement('li');
               li.innerHTML = "Site: ";
               ol.appendChild(li)
+
               let a = document.createElement('a');
               a.innerHTML = site.title;
               a.href = site.url;
