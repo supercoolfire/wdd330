@@ -300,7 +300,7 @@ const main = {
         description: "",
       },{
         label: "Week 10 notes",
-        url: "week1/index.html",
+        url: "week10/index.html",
         reference: {
           books: [
             {
@@ -315,8 +315,12 @@ const main = {
           ],
         sites: [
           {
-            title: "",
-            url: "",
+            title: "Client-side form validation",
+            url: "https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation",
+          },
+          {
+            title: "Using the Fetch API",
+            url: "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch",
           },
         ]
         },

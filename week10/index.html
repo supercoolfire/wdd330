@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description"
+    content="Notes for Jayser Pilapil in WDD 330: Web Frontend Development II at Brigham Young University - Idaho">
+<meta name="author" content="Jayser Pilapil">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/prism.css">
+<link rel="stylesheet" href="../css/small.css">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<title>Week 10 Notes</title>
+</head>
+
+<body>
+<header>
+  <h1 id="rickRoll">Week 10</h1>
+  <a href="../index.html"> 🡠 Back</a> </header>
+<main>
+  <div class="accordion">
+    <details>
+      <summary>Client-side form validation</summary>
+      <ul>
+        <li>
+          <pre class="line-numbers"><code class="language-html"  data-prismjs-copy="Copy to clipboard">&lt;!DOCTYPE html&gt;
+&lt;html lang="en-us"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width"&gt;
+    &lt;title&gt;Favorite fruit start&lt;/title&gt;
+    &lt;style&gt;
+      input:invalid {
+        border: 2px dashed red;
+      }
+
+      input:invalid:required {
+        background-image: linear-gradient(to right, pink, lightgreen);
+      }
+      input:valid {
+        border: 2px solid black;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form&gt;
+      &lt;label for="choose"&gt;Would you prefer a banana or a cherry?&lt;/label&gt; (required)
+      &lt;input id="choose" name="i-like" required /&gt;
+      &lt;button&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        </li>
+        <li>The Constraint Validation API
+          <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement"><code>HTMLButtonElement</code></a>&nbsp;(represents a&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>&nbsp;element)</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement"><code>HTMLFieldSetElement</code></a>&nbsp;(represents a&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset"><code>&lt;fieldset&gt;</code></a>&nbsp;element)</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement"><code>HTMLInputElement</code></a>&nbsp;(represents an&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>&nbsp;element)</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement"><code>HTMLOutputElement</code></a>&nbsp;(represents an&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output"><code>&lt;output&gt;</code></a>&nbsp;element)</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement"><code>HTMLSelectElement</code></a>&nbsp;(represents a&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>&nbsp;element)</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement"><code>HTMLTextAreaElement</code></a>&nbsp;(represents a&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>&nbsp;element)</li>
+          </ul>
+        </li>
+      </ul>
+    </details>
+    <details>
+      <summary>Using the Fetch API</summary>
+    </details>
+    <details>
+      <summary>Team Activity</summary>
+    </details>
+  </div>
+</main>
+<footer>
+  <p>&copy; <span id="theYear"> </span> | <a class="bold" href="../index.html">Jayser Pilapil</a> | WDD 330 Notes</p>
+</footer>
+<script src="../js/main.js"></script> 
+<script src="../js/prism.js"></script>
+</body>
+</html>
