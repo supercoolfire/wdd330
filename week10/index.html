@@ -60,12 +60,57 @@
             <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement"><code>HTMLOutputElement</code></a>&nbsp;(represents an&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output"><code>&lt;output&gt;</code></a>&nbsp;element)</li>
             <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement"><code>HTMLSelectElement</code></a>&nbsp;(represents a&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>&nbsp;element)</li>
             <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement"><code>HTMLTextAreaElement</code></a>&nbsp;(represents a&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>&nbsp;element)</li>
+          
+          
+          
+          
           </ul>
+          
+          
         </li>
       </ul>
     </details>
     <details>
       <summary>Using the Fetch API</summary>
+      <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">//basic fetch request
+fetch('http://example.com/movies.json')
+  .then((response) =&gt; response.json())
+  .then((data) =&gt; console.log(data));</code></pre>
+      <ul>
+        <li>Supplying request options
+        <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">// Example POST method implementation:
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+postData('https://example.com/answer', { answer: 42 })
+  .then((data) =&gt; {
+    console.log(data); // JSON data parsed by `data.json()` call
+  });</code></pre>
+        </li>
+        <li>Sending a request with credentials included
+          <p>To cause browsers to send a request with <span style="background-color: #ffff00;">credentials included on both same-origin</span> and <span style="background-color: #ffff00;">cross-origin</span> calls, add&nbsp;<code>credentials: 'include'</code>&nbsp;to the&nbsp;<code>init</code>&nbsp;object you pass to the&nbsp;<code>fetch()</code>&nbsp;method.</p>
+          <pre class="line-numbers"><code class="language-javascript"  data-prismjs-copy="Copy to clipboard">fetch('https://example.com', {
+  credentials: 'include'
+});</code></pre>
+        </li>
+      </ul>
+      
+      
     </details>
     <details>
       <summary>Team Activity</summary>
