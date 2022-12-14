@@ -326,8 +326,8 @@ const main = {
         },
         description: "",
       },{
-        label: "Week 11 notes",
-        url: "week1/index.html",
+        label: "Final Project",
+        url: "final-project/index.html",
         reference: {
           books: [
             {
@@ -425,7 +425,7 @@ const main = {
         let ol = document.createElement('ol');
         div.appendChild(ol);
         
-        if (e.reference.books[0].title != "" || e.reference.sites[0].title != "") {
+        if (e.reference.books[0].title != "" || e.reference.sites[0].title != "" || e.label == "Final Project") {
 
           if (e.reference.books[0].title != "") {
             e.reference.books.forEach(book => {
@@ -449,6 +449,7 @@ const main = {
                 });
               }
             });
+            // parent.appendChild(li);
           }
 
           if (e.reference.sites[0].title != "") { 
@@ -463,10 +464,15 @@ const main = {
               a.target = '_blank';
               li.appendChild(a)
             });
-          }           
-      
+            // parent.appendChild(li);
+          }  
 
+          if (e.label == "Final Project") { 
+            div.innerHTML = ""
+          }           
+          
           parent.appendChild(li);
+
     
       }
       });
