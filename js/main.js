@@ -345,6 +345,10 @@ const main = {
             title: "Block 2 Challenge Proposal",
             url: "block2proposals/index.html",
           },
+          {
+            title: "Video Recording",
+            url: "block2proposals/index.html",
+          },
         ]
         },
         description: "",
