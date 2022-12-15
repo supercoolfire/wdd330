@@ -54,4 +54,6 @@
   }
   .image {
     text-align: center;
+    position: inherit;
+    width: 100%;
   }
