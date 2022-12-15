@@ -49,3 +49,9 @@
     padding: 0;
     margin-bottom: 0;
   }
+  .colors {
+    margin: 0 auto;
+  }
+  .image {
+    text-align: center;
+  }
