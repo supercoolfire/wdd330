@@ -346,8 +346,12 @@ const main = {
             url: "block2proposals/index.html",
           },
           {
-            title: "Video Recording",
-            url: "block2proposals/index.html",
+            title: "Video Recording; Passcode: b0=#^R++",
+            url: "https://byupathway.zoom.us/rec/share/N03eB30kKN07A1ThjWETP_RzSZw10eDgUB5p5KKmPIpCq5jFE-t0t4Zn22kZXiQm.6Hzp6UaFhhCaTbKa?startTime=1671087125000",
+          },
+          {
+            title: "Video Recording; YouTube backup",
+            url: "https://youtu.be/oef1Liu4o8M",
           },
         ]
         },
