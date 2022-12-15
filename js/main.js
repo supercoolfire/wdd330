@@ -342,8 +342,8 @@ const main = {
           ],
         sites: [
           {
-            title: "",
-            url: "",
+            title: "Block 2 Challenge Proposal",
+            url: "block2proposals/index.html",
           },
         ]
         },
@@ -467,9 +467,9 @@ const main = {
             // parent.appendChild(li);
           }  
 
-          if (e.label == "Final Project") { 
-            div.innerHTML = ""
-          }           
+          // if (e.label == "Final Project") { 
+          //   div.innerHTML = ""
+          // }           
           
           parent.appendChild(li);
 
